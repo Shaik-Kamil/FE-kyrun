@@ -1,10 +1,16 @@
 import React from 'react';
+import { Link } from "react-router-dom"
+
 
 const NavBar = () => {
     return (
-        <div>
+        <nav>
+            <h2>
+                <Link to="/users">Find users</Link>
+            </h2>
             
-        </div>
+
+        </nav>
     );
 };
 
