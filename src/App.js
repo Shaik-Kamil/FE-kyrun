@@ -12,7 +12,7 @@ import ChatHome from './client/src/ChatHome'
 import ChatPage from "./client/src/chatPage";
 import './client/src/chat.css'
 import "./App.css";
-const socket = socketIO.connect('https://backend-team6.onrender.com/')
+const socket = socketIO.connect('http://localhost:3003')
 
 function App() {
   return (
