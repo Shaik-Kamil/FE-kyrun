@@ -1,70 +1,27 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Kyrun - RUN TOGETHER
 
-## Available Scripts
+Kyrun is a mobile app designed to help you find compatible jogging partners in your local area. With Kyrun, you can filter runners based on gender, age, location, and running pace to find the perfect jogging partner.
 
-In the project directory, you can run:
+Features
 
-### `npm start`
+Filter Runners
+Use the filter feature to find jogging partners based on your preferences. You can filter runners based on gender, age, location, and running pace.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Browse Profiles
+Once you've selected your preferences, you can browse through the profiles that match your preferences. Click on the profiles that share your common interests and start building your network.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+SOS Button
+Kyrun includes an SOS button feature that you can use in case of an imminent threat during a jog with the person you matched with. This feature provides a sense of security during your jogs.
 
-### `npm test`
+Chat Feature
+Kyrun offers a convenient chat feature that allows you to communicate directly with your matched profiles. This way, you can easily plan jogging sessions, ask questions, and get to know your jogging partners better before you meet in person.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+USER STORIES
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Lydia is a 25-year-old woman who recently moved to a new city for work. She loves to jog and is looking for a way to meet other joggers in her area. With Kyrun, Lydia can filter runners based on her preferences and find compatible jogging partners nearby. She can use the SOS button feature in case of an emergency, and the chat feature to communicate with her matched partners and plan jogging sessions. Kyrun helps Lydia expand her network and stay active in her new city.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+William is a 40-year-old man who wants to improve his running pace and meet new people in his area. With Kyrun, William can filter runners based on their pace and location to find compatible jogging partners nearby. He can use the chat feature to ask questions and plan jogging sessions with his matched partners. The SOS button feature provides William with a sense of security during his jogs. Kyrun helps William achieve his fitness goals and expand his social circle.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Betty is a 65-year-old retiree who wants to stay active and healthy. She enjoys jogging in her free time and wants to connect with other joggers in her area. With Kyrun, Betty can filter runners based on her preferences and find compatible jogging partners nearby. She can use the SOS button feature in case of an emergency, and the chat feature to communicate with her matched partners and plan jogging sessions. Kyrun helps Betty stay active and connected with other like-minded individuals in her community.
