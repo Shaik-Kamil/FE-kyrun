@@ -30,9 +30,9 @@ const MakeProfile = () => {
             </label>
             <br />
             <label>
-                Location:
+                Location: s
                 <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
-            </label>
+            </label> 
             <br />
             <label>
                 Running Pace:
