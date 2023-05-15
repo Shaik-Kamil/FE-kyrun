@@ -1,43 +1,159 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
+const API = process.env.REACT_APP_API_URL;
 
 const MakeProfile = () => {
+    
+    const navigate=useNavigate()
+
 
     // variables to hold info
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-  const [location, setLocation] = useState('');
-  const [runningPace, setRunningPace] = useState('');
+  const [profile, setProfile] = useState({
+    first_name:"",
+    last_name: "",
+    email: "",
+    password: "",
+    age: "",
+    zipcode: "",
+    pace: "",
+    gender: "",
+    image: "no image found",
+  })
+
+//   first_name TEXT,
+//   last_name TEXT,
+//   email TEXT UNIQUE,
+//   password TEXT,
+//   age INT,
+//   zipcode INT,
+//   pace INT,
+//   gender TEXT,
+//   image TEXT DEFAULT 'no image found'
 
  
+const addProduct = (newProfile) => {
+    axios
+      .post(`${API}/users`, newProfile)
+      .then(
+        () => {
+          navigate(`/users`);
+        },
+        (error) => console.error(error)
+      )
+      .catch((c) => console.warn("catch", c));
+  };
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // i need to look at backenc to confirm the dataabase
-  }
+    addProduct(profile);
+  };
+
+  const handleTextChange = (event) => {
+    setProfile({ ...profile, [event.target.id]: event.target.value });
+  };
     return (
         <div>
-            <h1>My Profile</h1>
+            <h1>CREATE A PROFILE</h1>
             <form onSubmit={handleSubmit}>
-            <label>
-                Name:
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-            </label>
+            <label>What is your first name?</label>
+                <input 
+                id='first_name'
+                type="text" 
+                value={profile.first_name}
+                onChange={handleTextChange}
+                placeholder="Type your First Name"
+                required
+             />
             <br />
-            <label>
-                Age:
-                <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
-            </label>
+            <label> What is your last name?</label>
+            <input 
+            id='last_name'
+            type="text" 
+            value={profile.last_name}
+            onChange={handleTextChange}
+            placeholder="Type your Last Name"
+            required
+             />
             <br />
-            <label>
-                Location: s
-                <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
-            </label> 
+            <label> What is your email?</label>
+            <input 
+            id='email'
+            type="text" 
+            value={profile.email}
+            onChange={handleTextChange}
+            placeholder="Type your Email"
+            required
+             />
             <br />
-            <label>
-                Running Pace:
-                <input type="text" value={runningPace} onChange={(e) => setRunningPace(e.target.value)} />
-            </label>
+            <label> Create a password?</label>
+            <input 
+            id='password'
+            type="text" 
+            value={profile.password}
+            onChange={handleTextChange}
+            minLength='4'
+            
+            required
+             />
+            <br />
+            {/* i need to update this */}
+            <label> What is your age?</label>
+            <input 
+            id='age'
+            type="number" 
+            value={profile.age}
+            onChange={handleTextChange}
+            placeholder="Type your age"
+            required
+             />
+            <br />
+        {/* i need to update this too */}
+            <label> What is your zipcode?</label>
+            <input 
+            id='zipcode'
+            type="number" 
+            value={profile.zipcode}
+            onChange={handleTextChange}
+            placeholder="Type your zipcode"
+            required
+             />
+            <br />
+            <label> What is your running pace?</label>
+            <input 
+            id='pace'
+            type="number" 
+            value={profile.pace}
+            onChange={handleTextChange}
+            placeholder="Type your running pace"
+            required
+             />
+            <br />
+            {/* {i need to update this??} */}
+            <label> Select your gender:</label>
+            <select id="gender" 
+            value={profile.gender} 
+            onChange={handleTextChange}>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="non-binary">Non-binary</option>
+            </select>
+            <br />
+            <label> Image URL:</label>
+            <input 
+            id="image"
+            type="text"
+            pattern="http[s]*://.+"
+            value={profile.image}
+            placeholder="http://"
+            onChange={handleTextChange}
+            required
+             />
             <br />
             <button type="submit">Save Profile</button>
             </form>
