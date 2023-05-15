@@ -1,9 +1,11 @@
 import React from 'react';
+import MakeProfile from '../Components/MakeProfile';
 
 const New = () => {
     return (
         <div>
-            <>new page</>
+
+            <MakeProfile />
         </div>
     );
 };

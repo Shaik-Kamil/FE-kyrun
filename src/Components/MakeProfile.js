@@ -1,9 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom"'
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
+const API = process.env.REACT_APP_API_URL;
 
 const MakeProfile = () => {
+    
+    const navigate=useNavigate()
+
 
     // variables to hold info
   const [profile, setProfile] = useState({
@@ -29,17 +34,31 @@ const MakeProfile = () => {
 //   image TEXT DEFAULT 'no image found'
 
  
+const addProduct = (newProfile) => {
+    axios
+      .post(`${API}/users`, newProfile)
+      .then(
+        () => {
+          navigate(`/users`);
+        },
+        (error) => console.error(error)
+      )
+      .catch((c) => console.warn("catch", c));
+  };
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // i need to look at backenc to confirm the dataabase
-  }
+    addProduct(profile);
+  };
 
   const handleTextChange = (event) => {
     setProfile({ ...profile, [event.target.id]: event.target.value });
   };
     return (
         <div>
-            <h1>My Profile</h1>
+            <h1>CREATE A PROFILE</h1>
             <form onSubmit={handleSubmit}>
             <label>What is your first name?</label>
                 <input 
@@ -73,7 +92,7 @@ const MakeProfile = () => {
             <br />
             <label> Create a password?</label>
             <input 
-            id='zipcode'
+            id='password'
             type="text" 
             value={profile.password}
             onChange={handleTextChange}
