@@ -1,0 +1,14 @@
+img {
+    height: 600px;
+    width: 600px;
+    float: left;
+}
+
+div {
+    background-color: rgb(82,113,255);
+}
+
+button {
+    background-color: #1A5E63;
+    color: #FFD500;
+}
