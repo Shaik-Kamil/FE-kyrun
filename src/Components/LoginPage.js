@@ -29,7 +29,7 @@ const LoginPage = () => {
                         <input type="text" id="email" name="email" placeholder="Enter your Email Address" />
                         <small></small>
                     </div>
-                <button type="submit">Subscribe</button>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     );
