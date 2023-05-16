@@ -160,7 +160,7 @@ const addProduct = (newProfile) => {
         </div>
     );
 
-// update
+// updategi
 };
 
 export default MakeProfile;
