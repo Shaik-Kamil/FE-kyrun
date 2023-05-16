@@ -159,6 +159,8 @@ const addProduct = (newProfile) => {
             </form>
         </div>
     );
+
+// updategi
 };
 
 export default MakeProfile;
