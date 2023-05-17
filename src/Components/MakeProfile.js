@@ -34,7 +34,7 @@ const MakeProfile = () => {
 //   image TEXT DEFAULT 'no image found'
 
  
-const addProduct = (newProfile) => {
+const addProfile = (newProfile) => {
     axios
       .post(`${API}/users`, newProfile)
       .then(
@@ -50,7 +50,7 @@ const addProduct = (newProfile) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addProduct(profile);
+    addProfile(profile);
   };
 
   const handleTextChange = (event) => {
