@@ -1,10 +1,10 @@
 import React from 'react';
-import UserDetails from '../Components/UserDetails';
+import GroupDetails from '../Components/GroupDetails';
 
 const Show = () => {
     return (
         <div>
-            <UserDetails />
+            <GroupDetails />
         </div>
     );
 };
