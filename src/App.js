@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ReactModal from 'react-modal';
+// import ReactModal from 'react-modal';
 import Edit from "./Pages/Edit";
 import FourOFour from "./Pages/FourOFour";
 import Home from "./Pages/Home";
@@ -9,12 +9,12 @@ import LoginPage from './Components/LoginPage';
 import New from "./Pages/New";
 import Show from "./Pages/Show";
 import NavBar from "./Components/NavBar";
-import socketIO from 'socket.io-client'
-import ChatHome from './client/src/ChatHome'
-import ChatPage from "./client/src/chatPage";
+// import socketIO from 'socket.io-client'
+// import ChatHome from './client/src/ChatHome'
+// import ChatPage from "./client/src/chatPage";
 import './client/src/chat.css'
 import "./App.css";
-import logo from '../src/LOGO NO BG.png';
+// import logo from '../src/LOGO NO BG.png';
 import './CSS/LoginPage.css';
 import RegistrationModal from './Components/RegistrationModal';
 
@@ -69,7 +69,7 @@ function App() {
             setUsername={setUsername}
             setPassword={setPassword}
             handleLogin={handleLogin}
-            logo={logo}
+            // logo={logo}
           />} />
           <Route path="/register" element={<RegistrationModal
             isOpen={registrationModalIsOpen}
@@ -85,7 +85,7 @@ function App() {
         </Routes>
       </Router>
 
-      <img src={logo} alt="Logo" />
+      {/* <img src={logo} alt="Logo" /> */}
 
       {!isLoggedIn && (
         <button onClick={handleRegister}>Register</button>
