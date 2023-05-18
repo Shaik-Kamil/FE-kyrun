@@ -1,67 +1,36 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../images/1.png';
-import '../CSS/LoginPage.css';
 
-const LoginPage = () => {
+
+function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isRegistering, setIsRegistering] = useState(false); // Tracks whether the user is registering or logging in
-  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-
-  const handleFormSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (isRegistering) {
-      try {
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
+    try {
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-        const data = await response.json();
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      try {
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
+      const data = await response.json();
+      console.log(data);
 
-        const data = await response.json();
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
+      // Redirect to the home page after successful login
+      // (Assuming your home page is at /home)
+      window.location.href = '/home';
+    } catch (err) {
+      console.log(err);
     }
   };
 
-  const toggleRegister = () => {
-    setIsRegistering(!isRegistering);
-  };
-
   return (
+
     <div>
       <h2>
         <img src={logo} alt="logo"></img>
@@ -124,7 +93,30 @@ const LoginPage = () => {
         )}
       </p>
     </div>
+
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+      </div>
+      <button type="submit">Log in</button>
+    </form>
+
   );
-};
+}
 
 export default LoginPage;

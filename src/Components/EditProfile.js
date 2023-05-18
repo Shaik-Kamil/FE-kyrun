@@ -1,64 +1,61 @@
-import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-
 const API = process.env.REACT_APP_API_URL;
 
-const MakeProfile = () => {
-    
-    const navigate=useNavigate()
+
+const EditProfile = () => {
+    let { id } = useParams();
+    let navigate = useNavigate();
 
 
-    // variables to hold info
-  const [profile, setProfile] = useState({
-    first_name:"",
-    last_name: "",
-    email: "",
-    password: "",
-    age: "",
-    zipcode: "",
-    pace: "",
-    gender: "",
-    image: "no image found",
-  })
+    const [profile, setProfile] = useState({
+        first_name:"",
+        last_name: "",
+        email: "",
+        password: "",
+        age: "",
+        zipcode: "",
+        pace: "",
+        gender: "",
+        image: "no image found",
+      })
 
-//   first_name TEXT,
-//   last_name TEXT,
-//   email TEXT UNIQUE,
-//   password TEXT,
-//   age INT,
-//   zipcode INT,
-//   pace INT,
-//   gender TEXT,
-//   image TEXT DEFAULT 'no image found'
-
- 
-const addProfile = (newProfile) => {
-    axios
-      .post(`${API}/users`, newProfile)
-      .then(
-        () => {
-          navigate(`/users`);
-        },
-        (error) => console.error(error)
-      )
-      .catch((c) => console.warn("catch", c));
-  };
+      const updateProfile = (updatedProfile) => {
+        console.log("IDDDDDD", id);
+        axios
+          .put(`${API}/users/${id}`, updatedProfile)
+          .then(
+            () => {
+              console.log("hello", id);
+              navigate(`/users/${id}`);
+            },
+            (error) => console.error(error)
+          )
+          .catch((c) => console.warn("catch", c));
+      };
 
 
+      const handleTextChange = (event) => {
+        setProfile({ ...profile, [event.target.id]: event.target.value });
+      };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addProfile(profile);
-  };
+      useEffect(() => {
+        axios.get(`${API}/users/${id}`).then(
+          (response) => setProfile(response.data),
+          (error) => navigate(`/not-found`)
+        );
+      }, [id, navigate]);
 
-  const handleTextChange = (event) => {
-    setProfile({ ...profile, [event.target.id]: event.target.value });
-  };
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        updateProfile(profile, id);
+      };
+
+
     return (
         <div>
-            <h1>CREATE A PROFILE</h1>
+            <h1>Edit your Profile</h1>
             <form onSubmit={handleSubmit}>
             <label>What is your first name?</label>
                 <input 
@@ -155,12 +152,11 @@ const addProfile = (newProfile) => {
             required
              />
             <br />
-            <button type="submit">Save Profile</button>
+            <button type="submit">Update Info</button>
             </form>
+            
         </div>
     );
-
-// updategi
 };
 
-export default MakeProfile;
+export default EditProfile;
