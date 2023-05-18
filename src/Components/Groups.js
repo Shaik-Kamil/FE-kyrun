@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// THIS IS FOR BROWSE GROUPS, DISPLAYS ALL GROUPS ON APP
+
 const Group = () => {
   const [groups, setGroups] = useState([]);
 
