@@ -16,7 +16,7 @@ import './client/src/chat.css'
 import "./App.css";
 // import logo from '../src/LOGO NO BG.png';
 import './CSS/LoginPage.css';
-import RegistrationModal from './Components/RegistrationModal';
+// import RegistrationModal from './Components/RegistrationModal';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -71,11 +71,11 @@ function App() {
             handleLogin={handleLogin}
             // logo={logo}
           />} />
-          <Route path="/register" element={<RegistrationModal
+          {/* <Route path="/register" element={<RegistrationModal
             isOpen={registrationModalIsOpen}
             onClose={closeRegistrationModal}
             handleRegistration={handleRegistration}
-          />} />
+          />} /> */}
           <Route path="/users/new" element={<New />} />
           <Route exact path="/users/:id" element={<Show />} />
           <Route path="/users/:id/edit" element={<Edit />} />
