@@ -8,7 +8,7 @@ const NavBar = () => {
     return (
         <nav>
             <h2>
-                <Link to="/users">Find users</Link>
+                <Link to="/login">Login / Register</Link>
             </h2>
         </nav>
     );

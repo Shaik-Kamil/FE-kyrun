@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../LOGO NO BG.png';
+import logo from '../images/1.png';
 import '../CSS/LoginPage.css';
 
 const LoginPage = () => {
@@ -66,29 +66,29 @@ const LoginPage = () => {
       <h2>
         <img src={logo} alt="logo"></img>
         <br />
-        <Link to="/users">Login</Link>
+        {/* <Link to="/users">Login</Link> */}
       </h2>
-      <form onSubmit={handleFormSubmit}>
+      <form className='login-form' onSubmit={handleFormSubmit}>
         <h1>{isRegistering ? 'Register' : 'Log In'}</h1>
         <div className="field">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Email: </label>
           <input
             type="text"
             id="email"
             name="email"
-            placeholder="Enter your Email Address"
+            placeholder="Enter Email"
             value={email}
             onChange={handleEmailChange}
           />
           <small></small>
         </div>
         <div className="field">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password: </label>
           <input
             type="password"
             id="password"
             name="password"
-            placeholder="Enter your Password"
+            placeholder="Enter Password"
             value={password}
             onChange={handlePasswordChange}
           />
@@ -96,12 +96,12 @@ const LoginPage = () => {
         </div>
         {isRegistering && (
           <div className="field">
-            <label htmlFor="confirm-password">Confirm Password:</label>
+            <label htmlFor="confirm-password">Confirm Password: </label>
             <input
               type="password"
               id="confirm-password"
               name="confirm-password"
-              placeholder="Confirm your Password"
+              placeholder="Confirm Password"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
             />
