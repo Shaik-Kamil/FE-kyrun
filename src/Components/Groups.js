@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+const API = process.env.REACT_APP_API_URL
 
 // THIS IS FOR BROWSE GROUPS, DISPLAYS ALL GROUPS ON APP
 
@@ -7,7 +8,7 @@ const Group = () => {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/groups')
+    axios.get(`${API}/groups`)
       .then(res => {
         setGroups(res.data);
       })
