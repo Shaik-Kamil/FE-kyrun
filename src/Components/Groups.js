@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 const API = process.env.REACT_APP_API_URL
 
@@ -23,9 +24,8 @@ const Group = () => {
       <ul>
         {groups.map(group => (
           <li key={group.id}>
-            <a href={`/groups/${group.id}`}>
-              {group.name}
-            </a>
+            <Link to={`/groups/${group.id}`}></Link>
+              {group.title}
           </li>
         ))}
       </ul>
