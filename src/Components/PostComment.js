@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from "react-router-dom";
+import ReplyPost from './ReplyPost';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 const API = process.env.REACT_APP_API_URL;
+
 
 const PostComment = () => {
 
@@ -20,7 +22,19 @@ const PostComment = () => {
 
     },[])
 
+    const [replies, setReplies]=useState([])
+    useEffect(() => {
+        axios
+        .get(`${API}/reply`)
+        .then((res) => setReplies(res.data))
+        .catch((c) => console.warn("catch", c));
 
+    },[])
+
+    const [reply, setReply]=useState({
+        reply:"",
+        date: `${formattedDate}`
+    })
 
     // variables to hold info
   const [post, setPost] = useState({
@@ -28,20 +42,37 @@ const PostComment = () => {
     date: `${formattedDate}`
   });
 
+  const [showReplyForm, setShowReplyForm] = useState(false);
+  const [selectedCommentId, setSelectedCommentId] = useState(null);
 
-
-//     id SERIAL PRIMARY KEY,
-//     post TEXT,
-//     date TEXT NOT NULL,
-//     author_id INTEGER REFERENCES profile(id),
-//    groups_id INTEGER REFERENCES groups(id)
 
 const addPost = (newPost) => {
     axios
       .post(`${API}/posts`, newPost)
       .then(
         () => {
-          navigate(`/groups`);
+          navigate(`/users`);
+        },
+        (error) => console.error(error)
+      )
+      .catch((c) => console.warn("catch", c));
+  };
+
+  const addReply = (newReply) => {
+    const authorId = 1
+    const reply1 = {
+        ...newReply,
+        author_id: authorId,
+        post_id: selectedCommentId // Use the selectedCommentId as the post_id
+      };
+
+
+
+    axios
+      .post(`${API}/reply`, reply1)
+      .then(
+        () => {
+          navigate(`/users`);
         },
         (error) => console.error(error)
       )
@@ -49,13 +80,31 @@ const addPost = (newPost) => {
   };
 
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     addPost(post);
   };
 
+  const handleSubmitReply = (event) => {
+    event.preventDefault();
+    addReply(reply);
+    setShowReplyForm(false)
+  };
+
+
   const handleTextChange = (event) => {
     setPost({ ...post, [event.target.id]: event.target.value });
+  };
+
+  const handleTextChangeReply = (event) => {
+    setReply({ ...reply, [event.target.id]: event.target.value });
+  };
+
+
+  const toggleReplyForm = (commentId) => {
+    setShowReplyForm(!showReplyForm);
+    setSelectedCommentId(commentId);
   };
 
 
@@ -65,11 +114,30 @@ const addPost = (newPost) => {
         <div>
             <ul>
             {comments.map((comment) => (
-                <li key={comment.id}>{comment.date} {comment.post}</li>
+                <li key={comment.id}> {comment.post} {comment.date}<button onClick={() => toggleReplyForm(comment.id)}>reply</button> {' '} 
+                <ul>
+                    {replies
+                    .filter((reply) => reply.post_id === comment.id)
+                    .map((reply) => (
+                      <li key={reply.id}>
+                        {reply.reply} {reply.date} 
+                      </li> 
+                      ))}
+                </ul>
+                </li>
                 ))}
             </ul>
 
-            <h1>CREATE A NEW GROUP</h1>
+            {showReplyForm && selectedCommentId && (
+
+            <ReplyPost handleTextChangeReply={handleTextChangeReply}
+            handleSubmitReply={handleSubmitReply}
+            reply={reply}
+            />
+            )}
+
+
+            <h1>Comment</h1>
             <form onSubmit={handleSubmit}>
             <label>Create a post:</label>
                 <input 
@@ -80,6 +148,7 @@ const addPost = (newPost) => {
                 required
              />
             <br />
+            <label>Date:</label>
             <input 
                 id='date'
                 type="text" 
@@ -87,12 +156,8 @@ const addPost = (newPost) => {
                 onChange={handleTextChange}
                 required
              />
+             <button type="submit">Post Comment</button>
             </form>
-
-
-
-             
-            
         </div>
     );
 };
