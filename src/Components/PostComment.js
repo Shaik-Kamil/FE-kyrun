@@ -63,7 +63,7 @@ const addPost = (newPost) => {
     const reply1 = {
         ...newReply,
         author_id: authorId,
-        post_id: selectedCommentId // Use the selectedCommentId as the post_id
+        post_id: selectedCommentId 
       };
 
 
