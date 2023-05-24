@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import GroupDetails from './GroupDetails';
+import '../CSS/Groups.css'
 const API = process.env.REACT_APP_API_URL
 
 // THIS IS FOR BROWSE GROUPS, DISPLAYS ALL GROUPS ON APP
@@ -21,14 +22,12 @@ const Group = () => {
   return (
     <div>
       <h2>Groups</h2>
-      <ul>
-        {groups.map(group => (
-          <li key={group.id}>
-            <Link to={`/groups/${group.id}`}></Link>
-              {group.title}
-          </li>
-        ))}
-      </ul>
+      
+      {groups.map((group) => {
+        console.log(group)
+              return <GroupDetails key={group.id} group={group} />;
+            })}
+      
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import GroupDetails from '../Components/GroupDetails';
+import Group from '../Components/Groups';
 
 const Show = () => {
     return (
         <div>
-            <GroupDetails />
+            <Group />
         </div>
     );
 };
