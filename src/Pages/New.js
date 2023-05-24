@@ -1,9 +1,16 @@
 import React from 'react';
+import MakeProfile from '../Components/MakeProfile';
+import PostComment from '../Components/PostComment';
+
 
 const New = () => {
     return (
         <div>
-            <>new page</>
+
+            <MakeProfile />
+            <PostComment />
+            
+
         </div>
     );
 };
