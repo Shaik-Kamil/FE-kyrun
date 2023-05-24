@@ -10,6 +10,8 @@ const Home = () => {
            <br />
            {/* <img className='bg' src={bg} /> */}
            <MoreInfo />
+
+           
         </div>
     );
 };
