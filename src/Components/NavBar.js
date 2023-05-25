@@ -1,17 +1,19 @@
 import React from 'react';
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom";
 // import Login from '../Pages/Login';
 // import LoginPage from './LoginPage';
 
 
 const NavBar = () => {
+    const { id } = useParams();
     return (
         <nav>
             <h2>
                 <Link to="/login">Login / Register</Link>
             </h2>
             <h2>
-                <Link to="/userprofile"> Profile </Link>
+            
+                <Link to={`/userprofile/1`}> Profile </Link>
             </h2>
             <h2>
                 <Link to="/groups"> Groups </Link>

@@ -17,10 +17,10 @@ const MakeProfile = () => {
     email: "",
     password: "",
     age: "",
-    zipcode: "",
+    zipCode: "",
     pace: "",
     gender: "",
-    image: "no image found",
+    img: "not null",
   })
 
 //   first_name TEXT,
@@ -39,7 +39,7 @@ const addProfile = (newProfile) => {
       .post(`${API}/users`, newProfile)
       .then(
         () => {
-          navigate(`/users`);
+          navigate(`/userprofile/1`);
         },
         (error) => console.error(error)
       )
@@ -115,9 +115,9 @@ const addProfile = (newProfile) => {
         {/* i need to update this too */}
             <label> What is your zipcode?</label>
             <input 
-            id='zipcode'
+            id='zipCode'
             type="number" 
-            value={profile.zipcode}
+            value={profile.zipCode}
             onChange={handleTextChange}
             placeholder="Type your zipcode"
             required
@@ -146,10 +146,10 @@ const addProfile = (newProfile) => {
             <br />
             <label> Image URL:</label>
             <input 
-            id="image"
+            id="img"
             type="text"
             pattern="http[s]*://.+"
-            value={profile.image}
+            value={profile.img}
             placeholder="http://"
             onChange={handleTextChange}
             required

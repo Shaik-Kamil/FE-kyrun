@@ -50,7 +50,7 @@ const UserProfile = () => {
             <p>Age: {profile.age}</p>
             <p>Zipcode: {profile.zipcode}</p>
 
-            <Link to={`/users/${profile.id}/edit`}>
+            <Link to={`/userprofile/${profile.id}`}>
                 <button>Edit Profile</button>
             </Link>
 

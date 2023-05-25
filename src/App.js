@@ -65,7 +65,11 @@ function App() {
         <Routes>
           {/* Landing Page  */}
           <Route path="/" element={<Home />} />
-          <Route path="/groups" element={<Index />} />
+          {/* User Dashboard */}
+          <Route path="/userprofile/:id" element={<Index />} />
+          {/* Edit Your Own Profile  */}
+          <Route path="/userprofile/edit" element={<EditUser />} />
+          {/* Login / Register Page  */}
           <Route path="/login" element={<LoginPage
             username={username}
             password={password}
@@ -79,9 +83,14 @@ function App() {
             onClose={closeRegistrationModal}
             handleRegistration={handleRegistration}
           />} /> */}
-          <Route path="/groups/new" element={<New />} />
+          {/* Create A Group  */}
+          <Route path="/groups/new" element={<NewGroup />} /> 
+          {/* Edit Group  */}
+          <Route path="/groups/:id/edit" element={<EditGroup />} />
+          {/* Individual Group Page  */}
           <Route exact path="/groups/:id" element={<Show />} />
-          <Route path="/groups/:id/edit" element={<Edit />} />
+          {/* List of All Groups  */}
+          <Route path="/groups" element={<Groups />} />
           {/* <Route path="/chatHome" element={<ChatHome socket={socket} />} />
           <Route path='/chat' element={<ChatPage socket={socket} />} /> */}
           {/* Error Page  */}
