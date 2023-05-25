@@ -62,7 +62,7 @@ function App() {
         <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/groups" element={<Index />} />
+          <Route path="/users" element={<Index />} />
           <Route path="/login" element={<LoginPage
             username={username}
             password={password}
@@ -76,9 +76,9 @@ function App() {
             onClose={closeRegistrationModal}
             handleRegistration={handleRegistration}
           />} /> */}
-          <Route path="/groups/new" element={<New />} />
-          <Route exact path="/groups/:id" element={<Show />} />
-          <Route path="/groups/:id/edit" element={<Edit />} />
+          <Route path="/users/new" element={<New />} />
+          <Route exact path="/users/:id" element={<Show />} />
+          <Route path="/users/:id/edit" element={<Edit />} />
           {/* <Route path="/chatHome" element={<ChatHome socket={socket} />} />
           <Route path='/chat' element={<ChatPage socket={socket} />} /> */}
           <Route path="*" element={<FourOFour />} />
