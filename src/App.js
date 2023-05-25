@@ -66,7 +66,7 @@ function App() {
           {/* Landing Page  */}
           <Route path="/" element={<Home />} />
           {/* User Dashboard */}
-          <Route path="/userprofile" element={<Index />} />
+          <Route path="/userprofile/:id" element={<Index />} />
           {/* Edit Your Own Profile  */}
           <Route path="/userprofile/edit" element={<EditUser />} />
           {/* Login / Register Page  */}

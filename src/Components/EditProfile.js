@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Modal from "react-modal";
 const API = process.env.REACT_APP_API_URL;
 
 
@@ -15,11 +16,13 @@ const EditProfile = () => {
         email: "",
         password: "",
         age: "",
-        zipcode: "",
+        zipCode: "",
         pace: "",
         gender: "",
-        image: "no image found",
+        img: "not null",
       })
+
+      const [isModalOpen, setIsModalOpen] = useState(false);
 
       const updateProfile = (updatedProfile) => {
         console.log("IDDDDDD", id);
@@ -56,6 +59,12 @@ const EditProfile = () => {
     return (
         <div>
             <h1>Edit your Profile</h1>
+            <button onClick={() => setIsModalOpen(true)}>Edit Profile</button>
+            <Modal 
+            isOpen={isModalOpen}
+            onRequestClose={() => setIsModalOpen(false)}
+            contentLabel="Edit Profile Modal" >
+            
             <form onSubmit={handleSubmit}>
             <label>What is your first name?</label>
                 <input 
@@ -112,9 +121,9 @@ const EditProfile = () => {
         {/* i need to update this too */}
             <label> What is your zipcode?</label>
             <input 
-            id='zipcode'
+            id='zipCode'
             type="number" 
-            value={profile.zipcode}
+            value={profile.zipCode}
             onChange={handleTextChange}
             placeholder="Type your zipcode"
             required
@@ -143,18 +152,19 @@ const EditProfile = () => {
             <br />
             <label> Image URL:</label>
             <input 
-            id="image"
+            id="img"
             type="text"
             pattern="http[s]*://.+"
-            value={profile.image}
+            value={profile.img}
             placeholder="http://"
             onChange={handleTextChange}
             required
              />
             <br />
             <button type="submit">Update Info</button>
+            <button onClick={() => setIsModalOpen(false)}>Cancel</button>
             </form>
-            
+            </Modal>
         </div>
     );
 };
