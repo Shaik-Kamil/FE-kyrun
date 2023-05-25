@@ -10,6 +10,12 @@ const NavBar = () => {
             <h2>
                 <Link to="/login">Login / Register</Link>
             </h2>
+            <h2>
+                <Link to="/userprofile"> Profile </Link>
+            </h2>
+            <h2>
+                <Link to="/groups"> Groups </Link>
+            </h2>
         </nav>
     );
 };

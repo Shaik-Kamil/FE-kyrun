@@ -1,10 +1,10 @@
 import React from 'react';
-import Groups from '../Components/Groups'
+import UserProfile from '../Components/UserProfile'
 
 const Index = () => {
     return (
         <div>
-            <Groups />
+            <UserProfile />
         </div>
     );
 };

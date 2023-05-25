@@ -29,7 +29,7 @@ const GroupDetails = ({group}) => {
             {showDetails && (
                 <div className='group-details'>
                     <p>{group.about}</p>
-                    <button onClick={NavigateToGroup}>Join Group</button>
+                    <button onClick={NavigateToGroup}>View Group</button>
                 </div>
             )}
         </div>

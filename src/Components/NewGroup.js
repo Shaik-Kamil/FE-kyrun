@@ -34,7 +34,7 @@ const NewGroup = () => {
 
       const handleSubmit = (event) => {
         event.preventDefault();
-        addGroup(group);
+        addGroup(groups);
       };
     
       const handleTextChange = (event) => {

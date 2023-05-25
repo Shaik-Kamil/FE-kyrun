@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import ReactModal from 'react-modal';
-import Edit from "./Pages/Edit";
+import EditUser from "./Pages/EditUser";
 import FourOFour from "./Pages/FourOFour";
 import Home from "./Pages/Home";
 import Index from "./Pages/Index";
 import LoginPage from './Components/LoginPage';
-import New from "./Pages/New";
+import Groups from "./Components/Groups";
 import Show from "./Pages/Show";
 import NavBar from "./Components/NavBar";
+import NewGroup from "./Pages/NewGroup"
 // import socketIO from 'socket.io-client'
 // import ChatHome from './client/src/ChatHome'
 // import ChatPage from "./client/src/chatPage";
@@ -16,6 +17,7 @@ import './client/src/chat.css'
 import "./App.css";
 // import logo from '../src/LOGO NO BG.png';
 import './CSS/LoginPage.css';
+import EditGroup from './Components/EditGroup';
 // import RegistrationModal from './Components/RegistrationModal';
 
 function App() {
@@ -61,8 +63,13 @@ function App() {
       <Router>
         <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
+          {/* Landing Page  */}
           <Route path="/" element={<Home />} />
-          <Route path="/groups" element={<Index />} />
+          {/* User Dashboard */}
+          <Route path="/userprofile" element={<Index />} />
+          {/* Edit Your Own Profile  */}
+          <Route path="/userprofile/edit" element={<EditUser />} />
+          {/* Login / Register Page  */}
           <Route path="/login" element={<LoginPage
             username={username}
             password={password}
@@ -76,11 +83,17 @@ function App() {
             onClose={closeRegistrationModal}
             handleRegistration={handleRegistration}
           />} /> */}
-          <Route path="/groups/new" element={<New />} />
+          {/* Create A Group  */}
+          <Route path="/groups/new" element={<NewGroup />} /> 
+          {/* Edit Group  */}
+          <Route path="/groups/:id/edit" element={<EditGroup />} />
+          {/* Individual Group Page  */}
           <Route exact path="/groups/:id" element={<Show />} />
-          <Route path="/groups/:id/edit" element={<Edit />} />
+          {/* List of All Groups  */}
+          <Route path="/groups" element={<Groups />} />
           {/* <Route path="/chatHome" element={<ChatHome socket={socket} />} />
           <Route path='/chat' element={<ChatPage socket={socket} />} /> */}
+          {/* Error Page  */}
           <Route path="*" element={<FourOFour />} />
         </Routes>
       </Router>

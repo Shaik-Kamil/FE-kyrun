@@ -6,7 +6,7 @@ import bg from '../images/Untitled design (2).png'
 const Home = () => {
     return (
         <div>
-           <LoginPage />
+           {/* <LoginPage /> */}
            <br />
            {/* <img className='bg' src={bg} /> */}
            <MoreInfo />
