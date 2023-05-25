@@ -13,7 +13,7 @@ const PostComment = () => {
 
     const navigate=useNavigate()
 
-    const [comments, setComments]=useState([])
+    const [comments, setComments]= useState([])
     useEffect(() => {
         axios
         .get(`${API}/posts`)
@@ -22,7 +22,7 @@ const PostComment = () => {
 
     },[])
 
-    const [replies, setReplies]=useState([])
+    const [replies, setReplies]= useState([])
     useEffect(() => {
         axios
         .get(`${API}/reply`)
@@ -31,7 +31,7 @@ const PostComment = () => {
 
     },[])
 
-    const [reply, setReply]=useState({
+    const [reply, setReply]= useState({
         reply:"",
         date: `${formattedDate}`
     })
@@ -51,7 +51,7 @@ const addPost = (newPost) => {
       .post(`${API}/posts`, newPost)
       .then(
         () => {
-          navigate(`/users`);
+          navigate(`/groups`);
         },
         (error) => console.error(error)
       )
@@ -72,7 +72,7 @@ const addPost = (newPost) => {
       .post(`${API}/reply`, reply1)
       .then(
         () => {
-          navigate(`/users`);
+          navigate(`/groups`);
         },
         (error) => console.error(error)
       )
