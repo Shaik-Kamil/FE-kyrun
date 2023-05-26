@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState} from "react";
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import '../CSS/Groups.css'
 // const API = process.env.REACT_APP_API_URL
 
@@ -29,7 +29,11 @@ const GroupDetails = ({group}) => {
             {showDetails && (
                 <div className='group-details'>
                     <p>{group.about}</p>
-                    <button onClick={NavigateToGroup}>View Group</button>
+
+                    <Link to={`/groups/${group.id}`}>
+
+                    <button> View Group </button>
+                    </Link>
                 </div>
             )}
         </div>

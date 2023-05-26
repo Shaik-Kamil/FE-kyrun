@@ -66,6 +66,7 @@ const EditProfile = () => {
             contentLabel="Edit Profile Modal" >
             
             <form onSubmit={handleSubmit}>
+              <h2>Edit Profile Form</h2>
             <label>What is your first name?</label>
                 <input 
                 id='first_name'
