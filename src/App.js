@@ -24,6 +24,7 @@ import Yianna from './Components/Yianna';
 import Richie from './Components/Richie';
 import Melanie from './Components/Melanie';
 import Becky from './Components/Becky';
+import Footer from './Components/Footer';
 // import RegistrationModal from './Components/RegistrationModal';
 
 function App() {
@@ -105,19 +106,20 @@ function App() {
           {/* <Route path="/chatHome" element={<ChatHome socket={socket} />} />
           <Route path='/chat' element={<ChatPage socket={socket} />} /> */}
           {/* Error Page  */}
-          <Route path="/About" element={<AboutUs />} />
-          <Route path="Shaik" element={<Shaik />} />
-          <Route path="Yianna" element={<Yianna />} />
-          <Route path="Richie" element={<Richie />} />
-          <Route path="Melanie" element={<Melanie />} />
-          <Route path="Becky" element={<Becky />} />
-          <Route path="*" element={<FourOFour />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="shaik" element={<Shaik />} />
+          <Route path="yianna" element={<Yianna />} />
+          <Route path="richie" element={<Richie />} />
+          <Route path="melanie" element={<Melanie />} />
+          <Route path="becky" element={<Becky />} />
+          <Route path="*" onClick={handleRegister} element={<FourOFour />} />
         </Routes>
+        <Footer />
       </Router>
 
       {/* <img src={logo} alt="Logo" /> */}
 
-      {!isLoggedIn && <button onClick={handleRegister}>Register</button>}
+      {/* {!isLoggedIn && <button onClick={handleRegister}>Register</button>} */}
     </div>
   );
 }

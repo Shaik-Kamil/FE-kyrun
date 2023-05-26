@@ -1,5 +1,6 @@
 import React from 'react';
-// import '../components/About.css';
+import { FaGithubSquare } from 'react-icons/fa';
+import { AiFillLinkedin } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 function Becky() {
