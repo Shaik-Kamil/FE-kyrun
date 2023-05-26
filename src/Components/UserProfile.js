@@ -42,17 +42,13 @@ const UserProfile = () => {
 
     return (
         <div>
-            <p>TESTTTTTT</p>
+        
             <h1> {profile.first_name} {profile.last_name}</h1>   
-            <img src={profile.image} alt="Profile Image" /> 
+            <img src={profile.img} alt="Profile Image" /> 
             <p>Gender: {profile.gender}</p>
             <p>Running Pace: {profile.pace}</p>
             <p>Age: {profile.age}</p>
             <p>Zipcode: {profile.zipcode}</p>
-
-            <Link to={`/userprofile/${profile.id}`}>
-                <button>Edit Profile</button>
-            </Link>
 
             {/* <button onClick={handleDelete}>Delete account</button> */}
         </div>

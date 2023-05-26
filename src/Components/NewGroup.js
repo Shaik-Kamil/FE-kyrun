@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
 
 //    id SERIAL PRIMARY KEY,
 // title TEXT NOT NULL,
@@ -10,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 const API = process.env.REACT_APP_API_URL;
 
 const NewGroup = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
     const [groups, setGroups] = useState({
         title: "",
         about: "",
@@ -44,7 +47,13 @@ const NewGroup = () => {
     return (
         <div>
             <h1>CREATE A NEW GROUP</h1>
+            <button onClick={() => setIsModalOpen(true)}>New Group</button>
+            <Modal 
+            isOpen={isModalOpen}
+            onRequestClose={() => setIsModalOpen(false)}
+            contentLabel="Edit Profile Modal" >
             <form onSubmit={handleSubmit}>
+            <h2>New Group Form</h2>
             <label>Group Title:</label>
                 <input 
                 id='title'
@@ -76,7 +85,9 @@ const NewGroup = () => {
              <br />
 
             <button type="submit">Save Group Info</button>
+            <button onClick={() => setIsModalOpen(false)}>Cancel</button>
             </form>
+            </Modal>
 
             
         </div>

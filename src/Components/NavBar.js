@@ -13,7 +13,7 @@ const NavBar = () => {
             </h2>
             <h2>
             
-                <Link to={`/userprofile/1`}> Profile </Link>
+                <Link to={`/userprofile/3`}> Profile </Link>
             </h2>
             <h2>
                 <Link to="/groups"> Groups </Link>
