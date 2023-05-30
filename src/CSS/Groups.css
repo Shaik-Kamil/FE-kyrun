@@ -1,4 +1,20 @@
 .group-images {
     width: 200px;
     height: 200px;
+    border-radius: 5px;
+}
+
+.group-list {
+    display: inline-block;
+    text-align: center;
+    padding: 15px;
+    margin: 15px;
+}
+
+.group-name {
+    font-size: 15px;
+}
+
+.group-details {
+    display: inline-block;
 }

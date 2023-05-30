@@ -1,6 +1,6 @@
 import ReplyPost from './ReplyPost';
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 const API = process.env.REACT_APP_API_URL;
 
@@ -9,6 +9,7 @@ const PostComment = () => {
 
     const today = new Date();
     const formattedDate = today.toLocaleDateString();
+    const { id } = useParams()
   
 
     const navigate=useNavigate()
@@ -16,16 +17,15 @@ const PostComment = () => {
     const [comments, setComments]= useState([])
     useEffect(() => {
         axios
-        .get(`${API}/posts`)
+        .get(`${API}/posts/${id}`)
         .then((res) => setComments(res.data))
         .catch((c) => console.warn("catch", c));
-
-    },[])
+    }, [])
 
     const [replies, setReplies]= useState([])
     useEffect(() => {
         axios
-        .get(`${API}/reply`)
+        .get(`${API}/reply/${id}`)
         .then((res) => setReplies(res.data))
         .catch((c) => console.warn("catch", c));
 
@@ -48,7 +48,7 @@ const PostComment = () => {
 
 const addPost = (newPost) => {
     axios
-      .post(`${API}/posts`, newPost)
+      .post(`${API}/posts/`, newPost)
       .then(
         () => {
           navigate(`/groups`);

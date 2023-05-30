@@ -20,7 +20,7 @@ const GroupDetails = ({group}) => {
     return (
         <div className='group-list'>
             <img src={group.img} className='group-images' alt='group portrait'></img>
-            <h2>{group.title}</h2>
+            <h2 className='group-name'>{group.title}</h2>
             
             <button className='toggle-button' onClick={() => {ToggleGroupDetails()}}>
                 {!showDetails ? "Group Description" : "Close"}
