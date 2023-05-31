@@ -7,9 +7,6 @@ const API = process.env.REACT_APP_API_URL;
 
 const ReplyPost = ({ handleSubmitReply, handleTextChangeReply, reply }) => {
 
-    
-
-
     return (
         <div>
             <h1>Reply</h1>
