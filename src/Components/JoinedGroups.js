@@ -29,11 +29,10 @@ const JoinedGroups = () => {
         console.log(group)
               return <GroupDetails key={group.id} group={group} />;
             })}
-
-
             
         </div>
     );
 };
+
 
 export default JoinedGroups;
