@@ -19,23 +19,24 @@ const GroupDetails = ({group}) => {
 
     return (
         <div className='group-list'>
+            <Link to={`/groups/${group.id}`}>
             <img src={group.img} className='group-images' alt='group portrait'></img>
-            <h2 className='group-name'>{group.title}</h2>
             
-            <button className='toggle-button' onClick={() => {ToggleGroupDetails()}}>
+            <h2 className='group-name'>{group.title}</h2>
+            </Link>
+            
+            {/* <button className='toggle-button' onClick={() => {ToggleGroupDetails()}}>
                 {!showDetails ? "Group Description" : "Close"}
-            </button>
+            </button> */}
 
-            {showDetails && (
+            {/* {showDetails && ( */}
                 <div className='group-details'>
-                    <p>{group.about}</p>
+                    {/* <p>{group.about}</p> */}
 
-                    <Link to={`/groups/${group.id}`}>
 
-                    <button> View Group </button>
-                    </Link>
+                    {/* <button> View Group </button> */}
                 </div>
-            )}
+            {/* )} */}
         </div>
     );
 };
