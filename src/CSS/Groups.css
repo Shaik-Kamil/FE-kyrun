@@ -1,14 +1,23 @@
 .group-images {
+    display: flex;
+    justify-content: center;
     width: 200px;
     height: 200px;
-    border-radius: 5px;
+    border-radius: 7px;
+    padding-bottom: 3px;
+}
+
+.group-name {
+    padding: 10px;
 }
 
 .group-list {
     display: inline-block;
     text-align: center;
-    padding: 15px;
-    margin: 15px;
+    width: 270px;
+    height: 200px;
+    padding: 20px;
+    margin: 17px;
 }
 
 .group-name {

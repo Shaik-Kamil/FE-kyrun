@@ -23,10 +23,12 @@ function OneGroup () {
     
   const [isJoined, setIsJoined] = useState(group.isJoined);
 
+  const profileID=3
+
   const handleJoin = async () => {
     try {
       // Send a request to the server to join the group
-      const response = await axios.post(`${API}/usergroups/${group.id}`);
+      const response = await axios.post(`${API}/usergroups/${profileID}/${group.id}`);
 
       // Update the UI based on the response
       setIsJoined(true);
@@ -39,7 +41,7 @@ function OneGroup () {
   const handleLeave = async () => {
     try {
       // Send a request to the server to join the group
-      const response = await axios.delete(`${API}/usergroups/${group.id}`);
+      const response = await axios.delete(`${API}/usergroups/${profileID}/${group.id}`);
 
       // Update the UI based on the response
       setIsJoined(true);
@@ -49,7 +51,7 @@ function OneGroup () {
     }  
   };
 
-  
+
 
 
     return (
