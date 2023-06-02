@@ -1,6 +1,6 @@
 import ReplyPost from './ReplyPost';
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 const API = process.env.REACT_APP_API_URL;
 
@@ -12,7 +12,7 @@ const PostComment = () => {
     const { id } = useParams()
   
 
-    const navigate=useNavigate()
+    // const navigate=useNavigate()
 
     const [comments, setComments]= useState([])
     useEffect(() => {
@@ -20,7 +20,7 @@ const PostComment = () => {
         .get(`${API}/posts/${id}`)
         .then((res) => setComments(res.data))
         .catch((c) => console.warn("catch", c));
-    }, [])
+    }, [id])
 
     const [replies, setReplies]= useState([])
     useEffect(() => {
@@ -29,17 +29,22 @@ const PostComment = () => {
         .then((res) => setReplies(res.data))
         .catch((c) => console.warn("catch", c));
 
-    },[])
+    },[id])
 
     const [reply, setReply]= useState({
         reply:"",
-        date: `${formattedDate}`
+        date: `${formattedDate}`,
+        posts_id: `${id}`,
+        author_id: `${id}`,
+        groups_id: `${id}`
     })
 
     // variables to hold info
   const [post, setPost] = useState({
     post:"",
-    date: `${formattedDate}`
+    date: `${formattedDate}`,
+    author_id: `${id}`,
+    groups_id: `${id}`
   });
 
   const [showReplyForm, setShowReplyForm] = useState(false);
@@ -50,13 +55,30 @@ const addPost = (newPost) => {
     axios
       .post(`${API}/posts/`, newPost)
       .then(
-        () => {
-          navigate(`/groups`);
+        (response) => {
+          setComments([response.data, ...comments]);
         },
         (error) => console.error(error)
       )
       .catch((c) => console.warn("catch", c));
   };
+
+  // const deletePost = (id) => {
+  //   axios
+  //   .delete(`${API}/posts/${id}`)
+  //   .then(
+  //     () => {
+  //       const copyPostArray = [...comments]
+  //       const indexDeletedPost = copyPostArray.findIndex((comment) => {
+  //         return comment.id === id
+  //       })
+  //       copyPostArray.splice(indexDeletedPost, 1)
+  //       setComments(copyPostArray)
+  //     },
+  //     (error) => console.error(error)
+  //   )
+  //   .catch((c) => console.warn('catch', c))
+  // }
 
   const addReply = (newReply) => {
     const authorId = 1
@@ -66,20 +88,16 @@ const addPost = (newPost) => {
         post_id: selectedCommentId 
       };
 
-
-
     axios
       .post(`${API}/reply`, reply1)
       .then(
-        () => {
-          navigate(`/groups`);
+        (response) => {
+          setReplies([response.data, ...replies]);
         },
         (error) => console.error(error)
       )
       .catch((c) => console.warn("catch", c));
   };
-
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -115,6 +133,7 @@ const addPost = (newPost) => {
             <ul>
             {comments.map((comment) => (
                 <li key={comment.id}> {comment.post} {comment.date}<button onClick={() => toggleReplyForm(comment.id)}>reply</button> {' '} 
+                {/* <button onClick={deletePost}>Delete</button> */}
                 <ul>
                     {replies
                     .filter((reply) => reply.post_id === comment.id)
