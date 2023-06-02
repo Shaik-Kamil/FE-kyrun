@@ -20,7 +20,7 @@ const PostComment = () => {
         .get(`${API}/posts/${id}`)
         .then((res) => setComments(res.data))
         .catch((c) => console.warn("catch", c));
-    }, [])
+    }, [id])
 
     const [replies, setReplies]= useState([])
     useEffect(() => {
@@ -29,7 +29,7 @@ const PostComment = () => {
         .then((res) => setReplies(res.data))
         .catch((c) => console.warn("catch", c));
 
-    },[])
+    },[id])
 
     const [reply, setReply]= useState({
         reply:"",
