@@ -25,7 +25,7 @@ const PostComment = () => {
     const [replies, setReplies]= useState([])
     useEffect(() => {
         axios
-        .get(`${API}/reply/${id}`)
+        .get(`${API}/reply/`)
         .then((res) => setReplies(res.data))
         .catch((c) => console.warn("catch", c));
 
@@ -63,22 +63,22 @@ const addPost = (newPost) => {
       .catch((c) => console.warn("catch", c));
   };
 
-  // const deletePost = (id) => {
-  //   axios
-  //   .delete(`${API}/posts/${id}`)
-  //   .then(
-  //     () => {
-  //       const copyPostArray = [...comments]
-  //       const indexDeletedPost = copyPostArray.findIndex((comment) => {
-  //         return comment.id === id
-  //       })
-  //       copyPostArray.splice(indexDeletedPost, 1)
-  //       setComments(copyPostArray)
-  //     },
-  //     (error) => console.error(error)
-  //   )
-  //   .catch((c) => console.warn('catch', c))
-  // }
+  const deletePost = (id) => {
+    axios
+    .delete(`${API}/posts/${id}`)
+    .then(
+      () => {
+        const copyPostArray = [...comments]
+        const indexDeletedPost = copyPostArray.findIndex((comment) => {
+          return comment.id === id
+        })
+        copyPostArray.splice(indexDeletedPost, 1)
+        setComments(copyPostArray)
+      },
+      (error) => console.error(error)
+    )
+    .catch((c) => console.warn('catch', c))
+  }
 
   const addReply = (newReply) => {
     const authorId = 1
@@ -133,7 +133,7 @@ const addPost = (newPost) => {
             <ul>
             {comments.map((comment) => (
                 <li key={comment.id}> {comment.post} {comment.date}<button onClick={() => toggleReplyForm(comment.id)}>reply</button> {' '} 
-                {/* <button onClick={deletePost}>Delete</button> */}
+                <button onClick={deletePost}>Delete</button>
                 <ul>
                     {replies
                     .filter((reply) => reply.post_id === comment.id)
