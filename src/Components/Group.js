@@ -21,7 +21,7 @@ function OneGroup () {
         })
     }, [id])
     
-  const [isJoined, setIsJoined] = useState(group.isJoined);
+  const [isJoined, setIsJoined] = useState(false);
 
   const profileID=3
 
@@ -32,10 +32,10 @@ function OneGroup () {
 
       // Update the UI based on the response
       setIsJoined(true);
-        console.log('Joined the group successfully');
+      console.log('Joined the group successfully');
     } catch (error) {
-        console.error('Failed to join the group', error);
-    }  
+      console.error('Failed to join the group', error);
+    }
   };
 
   const handleLeave = async () => {
@@ -44,7 +44,7 @@ function OneGroup () {
       const response = await axios.delete(`${API}/usergroups/${profileID}/${group.id}`);
 
       // Update the UI based on the response
-      setIsJoined(true);
+      setIsJoined(false);
         console.log('Left the group successfully');
     } catch (error) {
         console.error('Failed to leave the group', error);
