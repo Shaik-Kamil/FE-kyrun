@@ -8,11 +8,13 @@ const API = process.env.REACT_APP_API_URL
 const JoinedGroups = () => {
 
     const [joinedGroup, setJoinedGroup] = useState([]);
+    const [numJoinedGroups, setNumJoinedGroups] = useState(0)
 
     useEffect(() => {
         axios.get(`${API}/usergroups/3`)
           .then(res => {
             setJoinedGroup(res.data);
+            setNumJoinedGroups(res.data.length)
           })
           .catch(err => {
             console.log(err);
@@ -23,7 +25,7 @@ const JoinedGroups = () => {
     return (
         <div>
      <h1>Joined Groups</h1>
-      
+     <p>Number of groups joined: {numJoinedGroups}</p>
       
       {joinedGroup.map((group) => {
         console.log(group)
