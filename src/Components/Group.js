@@ -8,6 +8,7 @@ const API = process.env.REACT_APP_API_URL
 function OneGroup () {
     const [group, setGroup] = useState({})
     const { id } = useParams()
+    const [profileCount, setProfileCount] = useState(0)
     
     useEffect(() => {
         axios
@@ -19,6 +20,15 @@ function OneGroup () {
         .catch((c) => {
             console.warn("catch", c)
         })
+        axios
+      .get(`${API}/usergroups/${id}/profiles/count`)
+      .then((res) => {
+        console.log(res.data)
+        setProfileCount(res.data)
+      })
+      .catch((c) => {
+        console.warn("catch", c)
+      })
     }, [id])
     
   const [isJoined, setIsJoined] = useState(false);
@@ -61,6 +71,8 @@ function OneGroup () {
                 <h3 className='group-description'>{group.about}</h3>
 
                 <img className='group-img' src={group.img} alt='group'></img>
+
+                <p>Number of members in this group: {profileCount}</p>
 
                 <div className='comments'>
                     <PostComment />
