@@ -1,10 +1,12 @@
 import React from 'react';
-import UserDetails from '../Components/UserDetails';
+
+import Group from '../Components/Group';
+
 
 const Show = () => {
     return (
         <div>
-            <UserDetails />
+            <Group />
         </div>
     );
 };
