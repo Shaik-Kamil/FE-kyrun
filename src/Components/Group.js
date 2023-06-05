@@ -1,15 +1,18 @@
-import React from 'react';
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
 import PostComment from './PostComment'
+import GroupMembers from './GroupMembers';
 const API = process.env.REACT_APP_API_URL
 
 function OneGroup () {
     const [group, setGroup] = useState({})
     const { id } = useParams()
-    const [profileCount, setProfileCount] = useState(0)
     
+    
+
+
     useEffect(() => {
         axios
         .get(`${API}/groups/${id}`)
@@ -20,15 +23,6 @@ function OneGroup () {
         .catch((c) => {
             console.warn("catch", c)
         })
-        axios
-      .get(`${API}/usergroups/${id}/profiles/count`)
-      .then((res) => {
-        console.log(res.data)
-        setProfileCount(res.data)
-      })
-      .catch((c) => {
-        console.warn("catch", c)
-      })
     }, [id])
     
   const [isJoined, setIsJoined] = useState(false);
@@ -72,7 +66,9 @@ function OneGroup () {
 
                 <img className='group-img' src={group.img} alt='group'></img>
 
-                <p>Number of members in this group: {profileCount}</p>
+                <GroupMembers group={group} id={id} />
+
+                
 
                 <div className='comments'>
                     <PostComment />

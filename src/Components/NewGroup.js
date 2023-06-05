@@ -51,7 +51,7 @@ const NewGroup = () => {
             <Modal 
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
-            contentLabel="Edit Profile Modal" >
+            contentLabel="New Group Modal" >
             <form onSubmit={handleSubmit}>
             <h2>New Group Form</h2>
             <label>Group Title:</label>
