@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+const API = process.env.REACT_APP_API_URL;
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isRegistering, setIsRegistering] = useState(false); 
+  const [isRegistering, setIsRegistering] = useState(false);
   // Tracks whether the user is registering or logging in
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -25,41 +27,27 @@ function LoginPage() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    if (isRegistering) {
-      try {
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+    //newUser = email & password
+
+    const addLogin = (loginUser) => {
+      axios
+        .post(`${API}/users/login`, loginUser)
+        .then(
+          (res) => {
+            console.log(res.data.id);
+            navigate(`/userprofile/${res.data.id}`);
           },
-          body: JSON.stringify({ email, password }),
-        });
+          (error) => console.error(error)
+        )
+        .catch((c) => console.warn('catch', c));
+    };
 
-        const data = await response.json();
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      try {
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
+    let loginUser = {
+      email,
+      password,
+    };
 
-        const data = await response.json();
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
-
-  const toggleRegister = () => {
-    setIsRegistering(!isRegistering);
+    addLogin(loginUser);
   };
 
   return (
@@ -95,7 +83,7 @@ function LoginPage() {
           />
           <small></small>
         </div>
-        {isRegistering && (
+        {/* {isRegistering && (
           <div className="field">
             <label htmlFor="confirm-password">Confirm Password:</label>
             <input
@@ -108,24 +96,23 @@ function LoginPage() {
             />
             <small></small>
           </div>
-        )}
+        )} */}
         <button type="submit">{isRegistering ? 'Register' : 'Log In'}</button>
-        </form>
+      </form>
       <p>
         {isRegistering ? (
           <>
             Already have an account?{' '}
-            <button onClick={toggleRegister}>Log In</button>
+            <button onClick={handleFormSubmit}>Log In</button>
           </>
         ) : (
           <>
-            Don't have an account?{' '}
-            <button onClick={toggleRegister}>Register</button>
+            Don't have an account? <button>Register</button>
           </>
         )}
       </p>
     </div>
   );
-};
+}
 
 export default LoginPage;
