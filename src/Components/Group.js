@@ -1,14 +1,20 @@
-import React from 'react';
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
 import PostComment from './PostComment'
+import GroupMembers from './GroupMembers';
 const API = process.env.REACT_APP_API_URL
 
 function OneGroup () {
     const [group, setGroup] = useState({})
     const { id } = useParams()
+    const [isJoined, setIsJoined] = useState(false);
+    const profileID=3
     
+    
+
+
     useEffect(() => {
         axios
         .get(`${API}/groups/${id}`)
@@ -20,34 +26,45 @@ function OneGroup () {
             console.warn("catch", c)
         })
     }, [id])
+
+    useEffect(() => {
+        checkMembershipStatus();
+      }, [group.id, profileID]);
     
-  const [isJoined, setIsJoined] = useState(group.isJoined);
+      const checkMembershipStatus = async () => {
+        try {
+          const response = await axios.get(`${API}/usergroups/${profileID}/${id}`);
+          setIsJoined(true);
+        } catch (error) {
+          setIsJoined(false);
+        }
+      };
+    
+
+
 
   const handleJoin = async () => {
     try {
-      // Send a request to the server to join the group
-      const response = await axios.post(`${API}/usergroups/${group.id}`);
+      const response = await axios.post(`${API}/usergroups/${profileID}/${id}`);
 
-      // Update the UI based on the response
       setIsJoined(true);
-        console.log('Joined the group successfully');
+      console.log('Joined the group successfully');
     } catch (error) {
-        console.error('Failed to join the group', error);
-    }  
+      console.error('Failed to join the group', error);
+    }
   };
 
   const handleLeave = async () => {
     try {
-      // Send a request to the server to join the group
-      const response = await axios.delete(`${API}/usergroups/${group.id}`);
-
-      // Update the UI based on the response
-      setIsJoined(true);
-        console.log('Left the group successfully');
+      await axios.delete(`${API}/usergroups/${profileID}/${id}`);
+      
+      setIsJoined(false);
+      console.log('Left the group successfully');
     } catch (error) {
-        console.error('Failed to leave the group', error);
-    }  
+      console.error('Failed to leave the group', error);
+    }
   };
+
 
 
 
@@ -59,25 +76,26 @@ function OneGroup () {
 
                 <img className='group-img' src={group.img} alt='group'></img>
 
+                <GroupMembers group={group} id={id} />
+
+                
+
                 <div className='comments'>
                     <PostComment />
                 </div>
 
                 <div className='navi'>
-                    <div className='join'>
-                    {isJoined ? (
-                        <><p>You have joined this group.</p><button onClick={handleLeave}>Leave Group</button></>
-                    ) : (
-                        <button onClick={handleJoin}>Join Group</button>
-                    )}
-                    </div>
-                    {/* <div className='leave'>
-                    {isJoined ? (
-                        <p>You have left this group.</p>
-                    ) : (
-                        <button onClick={handleLeave}>Leave Group</button>
-                    )}
-                    </div> */}
+                <div className="join">
+            {isJoined ? (
+              <>
+                <h3>Welcome to the {group.title} community. </h3>
+                <button onClick={handleLeave}>Leave Group</button>
+              </>
+            ) : (
+              <button onClick={handleJoin}>Join Group</button>
+            )}
+          </div>
+            
                     <div className='back'>
                         <Link to={`/groups`}>
                             <button>Back</button>

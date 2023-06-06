@@ -111,7 +111,7 @@ function App() {
           <Route path="yianna" element={<Yianna />} />
           <Route path="richie" element={<Richie />} />
           <Route path="melanie" element={<Melanie />} />
-          <Route path="becky" element={<Becky />} />
+          {/* <Route path="becky" element={<Becky />} /> */}
           <Route path="*" onClick={handleRegister} element={<FourOFour />} />
         </Routes>
         <Footer />
