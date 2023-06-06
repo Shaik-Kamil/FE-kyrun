@@ -9,6 +9,8 @@ const API = process.env.REACT_APP_API_URL
 function OneGroup () {
     const [group, setGroup] = useState({})
     const { id } = useParams()
+    const [isJoined, setIsJoined] = useState(false);
+    const profileID=3
     
     
 
@@ -24,17 +26,27 @@ function OneGroup () {
             console.warn("catch", c)
         })
     }, [id])
-    
-  const [isJoined, setIsJoined] = useState(false);
 
-  const profileID=3
+    useEffect(() => {
+        checkMembershipStatus();
+      }, [group.id, profileID]);
+    
+      const checkMembershipStatus = async () => {
+        try {
+          const response = await axios.get(`${API}/usergroups/${profileID}/${id}`);
+          setIsJoined(true);
+        } catch (error) {
+          setIsJoined(false);
+        }
+      };
+    
+
+
 
   const handleJoin = async () => {
     try {
-      // Send a request to the server to join the group
-      const response = await axios.post(`${API}/usergroups/${profileID}/${group.id}`);
+      const response = await axios.post(`${API}/usergroups/${profileID}/${id}`);
 
-      // Update the UI based on the response
       setIsJoined(true);
       console.log('Joined the group successfully');
     } catch (error) {
@@ -44,15 +56,13 @@ function OneGroup () {
 
   const handleLeave = async () => {
     try {
-      // Send a request to the server to join the group
-      const response = await axios.delete(`${API}/usergroups/${profileID}/${group.id}`);
-
-      // Update the UI based on the response
+      await axios.delete(`${API}/usergroups/${profileID}/${id}`);
+      
       setIsJoined(false);
-        console.log('Left the group successfully');
+      console.log('Left the group successfully');
     } catch (error) {
-        console.error('Failed to leave the group', error);
-    }  
+      console.error('Failed to leave the group', error);
+    }
   };
 
 
@@ -75,20 +85,17 @@ function OneGroup () {
                 </div>
 
                 <div className='navi'>
-                    <div className='join'>
-                    {isJoined ? (
-                        <><p>You have joined this group.</p><button onClick={handleLeave}>Leave Group</button></>
-                    ) : (
-                        <button onClick={handleJoin}>Join Group</button>
-                    )}
-                    </div>
-                    {/* <div className='leave'>
-                    {isJoined ? (
-                        <p>You have left this group.</p>
-                    ) : (
-                        <button onClick={handleLeave}>Leave Group</button>
-                    )}
-                    </div> */}
+                <div className="join">
+            {isJoined ? (
+              <>
+                <h3>Welcome to the {group.title} community. </h3>
+                <button onClick={handleLeave}>Leave Group</button>
+              </>
+            ) : (
+              <button onClick={handleJoin}>Join Group</button>
+            )}
+          </div>
+            
                     <div className='back'>
                         <Link to={`/groups`}>
                             <button>Back</button>
