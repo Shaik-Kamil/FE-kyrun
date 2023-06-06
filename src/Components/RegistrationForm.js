@@ -29,6 +29,10 @@ function RegistrationForm() {
         console.log(err);
       }
     };
+
+    const handleTextChange = (event) => {
+      setProfile({ ...profile, [event.target.id]: event.target.value });
+    };
   
     return (
       <form onSubmit={handleSubmit}>

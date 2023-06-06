@@ -2,25 +2,25 @@ import React from 'react';
 
 function MoreInfo(props) {
     return (
-        <div className='info'>
-            <section className='fade-in'>
+        <div className='display-6'>
+            <section className='masthead'>
                 <h1>Kyrun</h1>
-                <p>Connect with local joggers in your area.</p>
+                <p>Safety In Numbers.</p>
                 {/* add image */}
             </section>
             <section className='fade-in'>
-                <h2>Find your match made in running heaven with our custom filters</h2>
-                <p>With Kyrun, you can filter runners based on gender, age, location, and even running pace. Once you've selected your preferences, you can browse through the results and click on the profiles that share your common interests and start building your netwrok.</p>
+                <h2>There's safety in numbers.</h2>
+                <p>Many people do not feel safe jogging alone, even in broad daylight. That's where Kyrun comes in. Kyrun allows you to find likeminded people who want to feel safe while achieveing their fitness goals.</p>
+                {/* add image */}
+            </section>
+            <section className='fade-in'>
+                <h2>Find a group that suits your running lifestyle and start building a fitness network.</h2>
+                <p>With Kyrun, you can search through countless groups to join or create your own group and safely begin your jouney!</p>
                 {/* add image that demonstrates a filter */}
             </section>
             <section className='fade-in'>
-                <h2>Tie up your laces and start chatting with your running buddy</h2>
-                <p>Easily plan jogging sessions, ask questions, and get to know your jogging partners better with our in App chat feature.</p>
-                {/* add image */}
-            </section>
-            <section className='fade-in'>
-                <h2>On Extra Step of Security</h2>
-                <p>One key feature of Kyrun is the SOS button, which you can use in case of an imminent threat during a jog with the person you matched with.</p>
+                <h2>Not sure where to run?</h2>
+                <p>Kyrun also offers suggestions for each borough for you and your new running buddies to explore! </p>
                 {/* add image */}
             </section>
             
