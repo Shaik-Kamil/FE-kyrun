@@ -3,10 +3,12 @@ import React from 'react';
 import Group from '../Components/Group';
 
 
-const Show = () => {
+const Show = ({ setUserId, userId }) => {
     return (
         <div>
-            <Group />
+            <Group 
+            setUserId={setUserId} 
+            userId={userId}/>
         </div>
     );
 };

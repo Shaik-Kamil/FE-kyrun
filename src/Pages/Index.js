@@ -6,13 +6,14 @@ import Groups from '../Components/Groups';
 import Suggested from '../Components/Suggested';
 import JoinedGroups from '../Components/JoinedGroups';
 
-const Index = () => {
+const Index = ({ userId }) => {
     return (
         <div>
             <UserProfile />
             <EditProfile />
             <NewGroup />
-            <JoinedGroups />
+            <JoinedGroups 
+            userId={userId} />
             <br/>
             {/* <Groups /> */}
             <Suggested />
