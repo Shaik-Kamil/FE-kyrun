@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
 import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
+import Bulletin from "./Bulletin";
 const API = process.env.REACT_APP_API_URL
 
 function OneGroup ({ userId }) {
@@ -75,6 +76,11 @@ function OneGroup ({ userId }) {
                 <h3 className='group-description'>{group.about}</h3>
 
                 <img className='group-img' src={group.img} alt='group'></img>
+
+
+                <div>
+                    <Bulletin group={group} />
+                </div>
 
                 <GroupMembers group={group} id={id} />
 
