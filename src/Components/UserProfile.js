@@ -21,23 +21,7 @@ const UserProfile = () => {
             console.warn("catch", c);
           });
       }, [id]);
-  
-    // const deleteProfile = () => {
-    //   axios
-    //     .delete(`${API}/users/${id}`)
-    //     .then(
-    //       () => {
-    //         navigate(`/users`);
-    //       },
-    //       (error) => console.error(error)
-    //     )
-    //     .catch((c) => console.warn("catch", c));
-    // };
-  
-    // const handleDelete = () => {
-    //   deleteProfile();
-    // };
-  
+
 
 
     return (

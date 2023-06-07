@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 const API = process.env.REACT_APP_API_URL;
 
-function LoginPage() {
+function LoginPage({ userId, setUserId }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
+
   // Tracks whether the user is registering or logging in
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
   const { id } = useParams();
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      setUserId(storedUserId);
+    }
+  }, [setUserId]);
+
+  useEffect(() => {
+    localStorage.setItem('userId', userId);
+  }, [userId]);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -35,6 +47,7 @@ function LoginPage() {
         .then(
           (res) => {
             console.log(res.data.id);
+            setUserId(res.data.id)
             navigate(`/userprofile/${res.data.id}`);
           },
           (error) => console.error(error)
@@ -49,6 +62,8 @@ function LoginPage() {
 
     addLogin(loginUser);
   };
+
+
 
   return (
     <div>

@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 // import LoginPage from './LoginPage';
 
 
-const NavBar = () => {
+const NavBar = ({  userId }) => {
     const { id } = useParams();
     return (
         <nav>
@@ -13,7 +13,7 @@ const NavBar = () => {
             </h2>
             <h2>
             
-                <Link to={`/userprofile/3`}> Profile </Link>
+                <Link to={`/userprofile/${userId}`}> Profile </Link>
             </h2>
             <h2>
                 <Link to="/groups"> Groups </Link>
