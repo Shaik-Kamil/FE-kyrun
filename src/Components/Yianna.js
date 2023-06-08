@@ -12,8 +12,18 @@ function Yianna() {
             id="abouts"
             src="https://avatars.githubusercontent.com/u/107489608?v=4"
           />
-          <p>bio here</p>
-          <p>another paragraph here if necessary</p>
+          <p>
+            I am a Full Stack Software Engineer Fellow, studying at Pursuit. I
+            am currently learning Javascript, CSS, and HTML, React, Node.js, and
+            etc. I am pursuing Software Engineering due to it's alignment with
+            my dream career to become a Senior Full Stack Developer and Web
+            Designer. My passion is for Web Development and Design as I value
+            creative expression and user experience. I look forward to building
+            connections with anyone in various fields as well as learning more
+            programming languages. I am open to new projects and collaborations!
+            I am interested in creating and problem solving ! I look forward to
+            sharing my upcoming projects and journey!
+          </p>
         </div>
       </section>
       <div>
