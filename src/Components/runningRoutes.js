@@ -9,7 +9,7 @@ function RunningRoutes() {
 
   useEffect(() => {
     axios
-      .get(`${API}/runningRoutes`)
+      .get(`${API}/runningroutes`)
       .then((res) => {
         console.log(res.data);
         setRunningRoutes(res.data);
