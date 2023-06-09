@@ -6,7 +6,7 @@ import '../CSS/NavBar.css'
 // import LoginPage from './LoginPage';
 
 
-const NavBar = () => {
+const NavBar = ({  userId }) => {
     const { id } = useParams();
 
     // const addProfile = (id) => {
@@ -22,6 +22,7 @@ const NavBar = () => {
     //   };
 
     return (
+
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style={{paddingBottom: '2px', paddingTop: '2px'}}>
             <div class="container px-4 px-lg-5" >
                 <Link to='/' className='logo'><img src={logo} className='logo' style={{
@@ -41,6 +42,7 @@ const NavBar = () => {
                     </ul>
                 </div>
             </div>
+
         </nav>
     );
 };
