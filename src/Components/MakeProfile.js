@@ -39,7 +39,7 @@ const addProfile = (newProfile) => {
       .post(`${API}/users`, newProfile)
       .then(
         () => {
-          navigate(`/userprofile/1`);
+          navigate(`/userprofile/${id}`);
         },
         (error) => console.error(error)
       )
