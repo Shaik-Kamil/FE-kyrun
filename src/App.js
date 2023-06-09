@@ -26,7 +26,7 @@ import Melanie from './Components/Melanie';
 import Becky from './Components/Becky';
 import Footer from './Components/Footer';
 // import RegistrationModal from './Components/RegistrationModal';
-import RunningRoutes from './Components/runningRoutes';
+import RunningRoutes from './Components/RunningRoutes';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
