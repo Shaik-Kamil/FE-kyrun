@@ -2,7 +2,7 @@ import React from 'react';
 import runningWomen from '../images/women-running-outside.webp'
 // import group1 from '../images/full-shot-people-running-together-outdoors_23-2149037622.avif'
 import group2 from '../images/rw-imagelibrary2020-hires-401-1675366389.jpg'
-import group3 from '../images/istockphoto-1319764588-612x612.jpg'
+import group3 from '../images/running-buddies.jpg'
 // import kyrunGif from '../images/KYRUN.gif'
 import kyrunGif2 from '../images/KYRUN (Billboard (Landscape) - 2592 x 864 px).gif'
 
@@ -32,26 +32,28 @@ function MoreInfo(props) {
             {/* </section> */} 
             <section class="about-section text-center" id="about"
             style={{
-                paddingTop: '20px'}}>
+                paddingTop: '50px'}}>
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8" style={{ paddingBottom: '50px', paddingTop: '50px'}} >
                         <h2 class="text-212529 mb-4">There's Safety In Numbers.</h2>
                         <p class="text-212529-50">
-                            Many people do not feel safe jogging alone, even in broad daylight. That's where Kyrun comes in. Kyrun allows you to find likeminded people who want to feel safe while achieveing their fitness goals.
+                            Many people do not feel safe jogging alone, even in broad daylight. That's where Kyrun comes in. Kyrun allows you to find likeminded people who want to feel safe while achieving their fitness goals.
                         </p>
                     </div>
                 </div>
                 {/* <img class="img-fluid" src={group1} alt="..." /> */}
             </div>
         </section>
-        <section class="projects-section bg-light" id="projects">
+        <section class="projects-section bg-light" id="projects" >
             <div class="container px-4 px-lg-5">
                 {/* <!-- Featured Project Row--> */}
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src={group3} alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center" style={{
+            backgroundColor:'#F8F9FA'}}>
+                    <div class="col-xl-8 col-lg-7" ><img class="img-fluid mb-3 mb-lg-0" src={group3} alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5" >
+                        <div class="featured-text text-center text-lg-left" style={{
+                                paddingRight:'80px'}}>
                             <h4>Start Building A Fitness Network.</h4>
                             <p class="text-black-50 mb-0">With Kyrun, you can search through countless groups to join or create your own group and safely begin your journey!</p>
                         </div>

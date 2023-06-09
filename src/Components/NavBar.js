@@ -22,10 +22,10 @@ const NavBar = () => {
     //   };
 
     return (
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class="container px-4 px-lg-5">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style={{paddingBottom: '2px', paddingTop: '2px'}}>
+            <div class="container px-4 px-lg-5" >
                 <Link to='/' className='logo'><img src={logo} className='logo' style={{
-                            height: '57px', width: '60px' }}/></Link>
+                            height: '80px', width: '80px' }}/></Link>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Navigation
                     <i class="fas fa-bars"></i>
@@ -37,7 +37,7 @@ const NavBar = () => {
                         <li class="nav-item" style={{
                         padding: '10px'}}><Link to='/groups'>Explore Groups</Link></li>
                         <li class="nav-item" style={{
-                        padding: '10px'}}><Link to={`/userprofile/${id}`}>Profile</Link></li>
+                        padding: '10px'}}><Link to={`/userprofile/3`}>Profile</Link></li>
                     </ul>
                 </div>
             </div>
