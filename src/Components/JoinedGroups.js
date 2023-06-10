@@ -5,13 +5,13 @@ import '../CSS/Groups.css'
 import { Link } from 'react-router-dom';
 const API = process.env.REACT_APP_API_URL
 
-const JoinedGroups = () => {
+const JoinedGroups = ({ userId }) => {
 
     const [joinedGroup, setJoinedGroup] = useState([]);
     const [numJoinedGroups, setNumJoinedGroups] = useState(0)
 
     useEffect(() => {
-        axios.get(`${API}/usergroups/3`)
+        axios.get(`${API}/usergroups/${userId}`)
           .then(res => {
             setJoinedGroup(res.data);
             setNumJoinedGroups(res.data.length)

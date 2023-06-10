@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
 import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
+import Bulletin from "./Bulletin";
 const API = process.env.REACT_APP_API_URL
 
-function OneGroup () {
-    const [group, setGroup] = useState({})
+function OneGroup ({ userId }) {
+    const [group, setGroup] = useState([])
     const { id } = useParams()
     const [isJoined, setIsJoined] = useState(false);
-    const profileID=3
+
     
     
 
@@ -29,11 +30,11 @@ function OneGroup () {
 
     useEffect(() => {
         checkMembershipStatus();
-      }, [group.id, profileID]);
+      }, [group.id, userId]);
     
       const checkMembershipStatus = async () => {
         try {
-          const response = await axios.get(`${API}/usergroups/${profileID}/${id}`);
+          const response = await axios.get(`${API}/usergroups/${userId}/${id}`);
           setIsJoined(true);
         } catch (error) {
           setIsJoined(false);
@@ -45,7 +46,7 @@ function OneGroup () {
 
   const handleJoin = async () => {
     try {
-      const response = await axios.post(`${API}/usergroups/${profileID}/${id}`);
+      const response = await axios.post(`${API}/usergroups/${userId}/${id}`);
 
       setIsJoined(true);
       console.log('Joined the group successfully');
@@ -56,7 +57,7 @@ function OneGroup () {
 
   const handleLeave = async () => {
     try {
-      await axios.delete(`${API}/usergroups/${profileID}/${id}`);
+      await axios.delete(`${API}/usergroups/${userId}/${id}`);
       
       setIsJoined(false);
       console.log('Left the group successfully');
@@ -75,6 +76,11 @@ function OneGroup () {
                 <h3 className='group-description'>{group.about}</h3>
 
                 <img className='group-img' src={group.img} alt='group'></img>
+
+
+                <div>
+                    <Bulletin group={group} />
+                </div>
 
                 <GroupMembers group={group} id={id} />
 
