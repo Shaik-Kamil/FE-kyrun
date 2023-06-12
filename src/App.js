@@ -31,6 +31,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isJoined, setIsJoined] = useState(false);
   const [userId, setUserId] = useState(() => {
     const storedUserId = localStorage.getItem('userId');
     return storedUserId ? storedUserId : '';
@@ -84,6 +85,8 @@ function App() {
           {/* User Dashboard */}
           <Route path="/userprofile/:id" element={<Index 
           userId={userId}
+          isJoined={isJoined}
+          setIsJoined={setIsJoined}
           />} />
           {/* Edit Your Own Profile  */}
           <Route path="/userprofile/edit" element={<EditUser />} />
@@ -116,6 +119,8 @@ function App() {
           <Route exact path="/groups/:id" element={<Show
           userId={userId}
           setUserId={setUserId}
+          isJoined={isJoined}
+          setIsJoined={setIsJoined}
 
           />} />
           {/* List of All Groups  */}

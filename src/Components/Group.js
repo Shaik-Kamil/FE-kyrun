@@ -7,10 +7,10 @@ import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
 const API = process.env.REACT_APP_API_URL
 
-function OneGroup ({ userId }) {
+function OneGroup ({ isJoined, setIsJoined, userId }) {
     const [group, setGroup] = useState([])
     const { id } = useParams()
-    const [isJoined, setIsJoined] = useState(false);
+    
 
     
     
@@ -87,7 +87,7 @@ function OneGroup ({ userId }) {
                 
 
                 <div className='comments'>
-                    <PostComment />
+                    <PostComment group={group} userId={userId} />
                 </div>
 
                 <div className='navi'>
