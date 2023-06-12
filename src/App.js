@@ -26,11 +26,17 @@ import Melanie from './Components/Melanie';
 import Becky from './Components/Becky';
 import Footer from './Components/Footer';
 // import RegistrationModal from './Components/RegistrationModal';
+import RunningRoutes from './Components/RunningRoutes';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isJoined, setIsJoined] = useState(false);
+  const [userId, setUserId] = useState(() => {
+    const storedUserId = localStorage.getItem('userId');
+    return storedUserId ? storedUserId : '';
+  });
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -68,12 +74,17 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        <NavBar
+          isLoggedIn={isLoggedIn}
+          handleLogout={handleLogout}
+          setUserId={setUserId}
+          userId={userId}
+        />
         <Routes>
           {/* Landing Page  */}
           <Route path="/" element={<Home />} />
           {/* User Dashboard */}
-          <Route path="/userprofile/:id" element={<Index />} />
+          <Route path="/userprofile/:id" element={<Index userId={userId} />} />
           {/* Edit Your Own Profile  */}
           <Route path="/userprofile/edit" element={<EditUser />} />
           {/* Login / Register Page  */}
@@ -86,6 +97,8 @@ function App() {
                 setUsername={setUsername}
                 setPassword={setPassword}
                 handleLogin={handleLogin}
+                userId={userId}
+                setUserId={setUserId}
                 // logo={logo}
               />
             }
@@ -100,7 +113,11 @@ function App() {
           {/* Edit Group  */}
           <Route path="/groups/:id/edit" element={<EditGroup />} />
           {/* Individual Group Page  */}
-          <Route exact path="/groups/:id" element={<Show />} />
+          <Route
+            exact
+            path="/groups/:id"
+            element={<Show userId={userId} setUserId={setUserId} />}
+          />
           {/* List of All Groups  */}
           <Route path="/groups" element={<Groups />} />
           {/* <Route path="/chatHome" element={<ChatHome socket={socket} />} />
@@ -111,7 +128,8 @@ function App() {
           <Route path="yianna" element={<Yianna />} />
           <Route path="richie" element={<Richie />} />
           <Route path="melanie" element={<Melanie />} />
-          {/* <Route path="becky" element={<Becky />} /> */}
+          <Route path="becky" element={<Becky />} />
+          <Route path="/runningroutes/" element={<RunningRoutes />} />
           <Route path="*" onClick={handleRegister} element={<FourOFour />} />
         </Routes>
         <Footer />

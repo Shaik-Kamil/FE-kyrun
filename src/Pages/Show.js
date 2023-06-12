@@ -1,12 +1,18 @@
 import React from 'react';
-
 import Group from '../Components/Group';
 
 
-const Show = () => {
+const Show = ({ setUserId, userId, isJoined, setIsJoined }) => {
     return (
         <div>
-            <Group />
+            <Group 
+            setUserId={setUserId} 
+            userId={userId}
+            setIsJoined={setIsJoined}
+            isJoined={isJoined}
+            />
+            
+
         </div>
     );
 };

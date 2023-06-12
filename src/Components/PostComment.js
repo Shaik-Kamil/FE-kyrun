@@ -2,10 +2,12 @@ import ReplyPost from './ReplyPost';
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import '../CSS/comment.css'
 const API = process.env.REACT_APP_API_URL;
 
 
-const PostComment = () => {
+const PostComment = ({ userId, group }) => {
+
 
     const today = new Date();
     const formattedDate = today.toLocaleDateString();
@@ -13,7 +15,7 @@ const PostComment = () => {
   
 
     // const navigate=useNavigate()
-
+    const [profile, setProfile] =useState([])
     const [comments, setComments]= useState([])
     useEffect(() => {
         axios
@@ -21,6 +23,13 @@ const PostComment = () => {
         .then((res) => setComments(res.data))
         .catch((c) => console.warn("catch", c));
     }, [id])
+
+    useEffect(() => {
+      axios
+      .get(`${API}/users/`)
+      .then((res) => setProfile(res.data))
+      .catch((c) => console.warn("catch", c));
+  }, [id])
 
     const [replies, setReplies]= useState([])
     useEffect(() => {
@@ -30,6 +39,8 @@ const PostComment = () => {
         .catch((c) => console.warn("catch", c));
 
     },[id])
+
+
 
     const [reply, setReply]= useState({
         reply:"",
@@ -52,8 +63,10 @@ const PostComment = () => {
 
 
 const addPost = (newPost) => {
+  const authorId = userId; // Use the userId as the author_id for the post
+  const postWithAuthorId = { ...newPost, author_id: authorId };
     axios
-      .post(`${API}/posts/`, newPost)
+      .post(`${API}/posts/`, postWithAuthorId)
       .then(
         (response) => {
           setComments([response.data, ...comments]);
@@ -65,26 +78,26 @@ const addPost = (newPost) => {
 
   const deletePost = (id) => {
     axios
-    .delete(`${API}/posts/${id}`)
-    .then(
-      () => {
-        const copyPostArray = [...comments]
-        const indexDeletedPost = copyPostArray.findIndex((comment) => {
-          return comment.id === id
-        })
-        copyPostArray.splice(indexDeletedPost, 1)
-        setComments(copyPostArray)
-      },
-      (error) => console.error(error)
-    )
-    .catch((c) => console.warn('catch', c))
-  }
+      .delete(`${API}/posts/${id}`)
+      .then(
+        () => {
+          const copyPostArray = [...comments];
+          const indexDeletedPost = copyPostArray.findIndex((comment) => {
+            return comment.id === id;
+          });
+          copyPostArray.splice(indexDeletedPost, 1);
+          setComments(copyPostArray);
+        },
+        (error) => console.error(error)
+      )
+      .catch((c) => console.warn("catch", c));
+  };
+  
 
   const addReply = (newReply) => {
-    const authorId = 1
     const reply1 = {
         ...newReply,
-        author_id: authorId,
+        author_id: userId,
         post_id: selectedCommentId 
       };
 
@@ -130,22 +143,37 @@ const addPost = (newPost) => {
     return (
 
         <div>
-            <ul>
-            {comments.map((comment) => (
-                <li key={comment.id}> {comment.post} {comment.date}<button onClick={() => toggleReplyForm(comment.id)}>reply</button> {' '} 
-                <button onClick={deletePost}>Delete</button>
-                <ul>
-                    {replies
-                    .filter((reply) => reply.post_id === comment.id)
-                    .map((reply) => (
-                      <li key={reply.id}>
-                        {reply.reply} {reply.date} 
-                      </li> 
-                      ))}
-                </ul>
+<ul>
+  {comments.map((comment) => {
+    // to verify that the USERID matched with the author ID
+    const commentAuthor = profile.find((user) => user.id === comment.author_id);
+    if (commentAuthor) {
+      return (
+        <li key={comment.id}>
+
+          <b><img src={commentAuthor.img} alt={commentAuthor.first_name} className="author-image" /> {commentAuthor.first_name}:</b>{' '} {comment.post} {comment.date} {' '}
+          <button onClick={() => toggleReplyForm(comment.id)}>reply</button>{' '}
+         
+          {parseInt(userId) === parseInt(comment.author_id) && (
+  <button onClick={() => deletePost(comment.id)}>Delete</button>
+)}
+
+          <ul>
+            {replies
+              .filter((reply) => reply.post_id === comment.id)
+              .map((reply) => (
+                <li key={reply.id}>
+                  {reply.reply} {reply.date}
                 </li>
-                ))}
-            </ul>
+              ))}
+          </ul>
+        </li>
+      );
+    } else {
+      return null; // Skip rendering if comment author profile not found
+    }
+  })}
+</ul>
 
             {showReplyForm && selectedCommentId && (
 
