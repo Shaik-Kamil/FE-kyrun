@@ -1,49 +1,49 @@
-img {
+/* img {
     height: 500px;
     width: 500px;
     float: left;
-}
+} */
 
-.bg {
+/* .bg {
     height: 500px;
     width: auto;
     float: right;
-}
+} */
 
-div {
+/* div {
     background-color: rgb(82,113,255);
-    /* background-image: url(); */
-}
+    background-image: url();
+} */
 
-.field {
+/* .field {
     display: block;
     margin: 20px;
-}
+} */
 
-.login-form {
+/* .login-form {
     margin: 30px;
-}
-
+} */
+/* 
 .fade-in {
     /* opacity: 0;
     transition: opacity 250ms ease-in; */
-    margin: 100px;
-}
+    /* margin: 100px; */
+/* } */ 
 
 /* .fade-in appear {
     opacity: 1;
 } */
 
 
-.info {
+/* .info {
     display: flex;
     flex-direction: column;
     float: right;
-}
-
+} */
+/* 
 button {
     background-color: #1A5E63;
     color: #FFD500;
     width: 150px;
     height: 30px;
-}
+} */

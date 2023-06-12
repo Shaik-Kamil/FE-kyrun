@@ -1,0 +1,29 @@
+.running-routes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.running-route-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+  height: 200px;
+  padding: 20px;
+  margin: 17px;
+  border-radius: 7px;
+  background-color: #f1f1f1;
+}
+
+.running-route-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 7px;
+  padding-bottom: 3px;
+}
+
+.running-route-name {
+  padding: 10px;
+  font-size: 15px;
+}
