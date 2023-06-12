@@ -74,7 +74,7 @@ function LoginPage({ userId, setUserId }) {
       <br></br>
       <form onSubmit={handleFormSubmit}>
         <h1 style={{marginBottom: '50px'}}>{isRegistering ? 'Register' : 'Log In'}</h1>
-        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px'}}>
+        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px', backgroundColor: '#5271FF'}}>
           <label htmlFor="email" className="input__label">Email:</label>
           <input
             class='input__input'
@@ -83,11 +83,11 @@ function LoginPage({ userId, setUserId }) {
             name="email"
             value={email}
             onChange={handleEmailChange}
-            style={{border: 'none', outline: 'none', bottom: '5px', backgroundColor: '#73859D'}}
+            style={{border: 'none', outline: 'none', left: '30px', bottom: '0px', width: '240px', backgroundColor: '#5271FF'}}
           />
           <small></small>
         </div>
-        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px'}}>
+        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px', backgroundColor: '#5271FF'}}>
           <label htmlFor="password" className="input__label">Password:</label>
           <input
             class='input__input'
@@ -96,11 +96,11 @@ function LoginPage({ userId, setUserId }) {
             name="password"
             value={password}
             onChange={handlePasswordChange}
-            style={{border: 'none', outline: 'none', left: '40px', bottom: '5px', backgroundColor: '#73859D'}}
+            style={{border: 'none', outline: 'none', left: '60px', bottom: '0px', width: '210px', backgroundColor: '#5271FF'}}
           />
           <small></small>
         </div>
-        {/* {isRegistering && (
+        {isRegistering && (
           <div className="field">
             <label htmlFor="confirm-password">Confirm Password:</label>
             <input
@@ -113,18 +113,18 @@ function LoginPage({ userId, setUserId }) {
             />
             <small></small>
           </div>
-        )} */}
-        <button type="submit" style={{border: 'none', outline: 'none', padding:'10px'}}>{isRegistering ? 'Register' : 'Log In'}</button>
+        )}
+        <button type="submit" className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '175px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>{isRegistering ? 'Register' : 'Log In'}</button>
       </form>
       <p style={{margin: '30px'}}>
         {isRegistering ? (
           <>
-            Already have an account?{' '}
-            <button onClick={handleFormSubmit} style={{border: 'none', outline: 'none', padding:'10px'}}>Log In</button>
+            <h4 style={{textAlign: 'center'}}>Already have an account?{' '}</h4>
+            <button onClick={handleFormSubmit} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', width: '175px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Log In</button>
           </>
         ) : (
           <>
-            Don't have an account? <button style={{border: 'none', outline: 'none', padding:'10px'}}>Register</button>
+            <h4 style={{textAlign: 'center'}}>Don't have an account?</h4> <button className='borderman btn-border' style={{border: 'none', outline: 'none', padding:'10px', backgroundColor: '#F18701', borderRadius: '5px', width: '175px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Register</button>
           </>
         )}
       </p>

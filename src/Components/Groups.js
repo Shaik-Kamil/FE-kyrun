@@ -24,6 +24,11 @@ const Groups = () => {
 
   return (
     <div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <h1>Filter Groups by Title</h1>
       <GroupFilter groups={groups} setFilteredGroups={setFilteredGroups} />
       
