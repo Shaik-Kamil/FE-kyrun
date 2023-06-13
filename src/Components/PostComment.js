@@ -64,6 +64,7 @@ const PostComment = ({ userId, group }) => {
 
 const addPost = (newPost) => {
   const authorId = userId; // Use the userId as the author_id for the post
+  // Post will be with userId
   const postWithAuthorId = { ...newPost, author_id: authorId };
     axios
       .post(`${API}/posts/`, postWithAuthorId)

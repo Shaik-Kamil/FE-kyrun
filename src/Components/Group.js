@@ -5,11 +5,14 @@ import { Link, useParams } from "react-router-dom"
 import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
+import NewBulletin from "./NewBulletin";
 const API = process.env.REACT_APP_API_URL
 
-function OneGroup ({ isJoined, setIsJoined, userId }) {
+function OneGroup ({ userId }) {
     const [group, setGroup] = useState([])
     const { id } = useParams()
+    const [isAuthor, setIsAuthor] = useState(false);
+    const [isJoined, setIsJoined] = useState(false);
     
 
     
@@ -22,6 +25,8 @@ function OneGroup ({ isJoined, setIsJoined, userId }) {
         .then((res) => {
             console.log(res.data)
             setGroup(res.data)
+            // if res.data.author ID === userId the state will be true if not then its false
+            setIsAuthor(res.data.author_id === userId);
         })
         .catch((c) => {
             console.warn("catch", c)
@@ -77,12 +82,18 @@ function OneGroup ({ isJoined, setIsJoined, userId }) {
 
                 <img className='group-img' src={group.img} alt='group'></img>
 
-
+                {isAuthor && (
+          <div>
+            <NewBulletin group={group} userId={userId} id={id} />
+          </div>
+        )}
                 <div>
-                    <Bulletin group={group} />
+                    <Bulletin 
+                    group={group} />
                 </div>
 
-                <GroupMembers group={group} id={id} />
+                <GroupMembers group={group} 
+                id={id} />
 
                 
 
