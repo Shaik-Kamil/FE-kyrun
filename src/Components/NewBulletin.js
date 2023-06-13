@@ -7,7 +7,7 @@ const API = process.env.REACT_APP_API_URL;
 const NewBulletin = ({ group, userId, id }) => {
   const navigate = useNavigate();
   const [isFormOpen, setIsFormOpen] = useState(false);
-
+  
   const getFormattedDate = () => {
     const today = new Date();
     return today.toLocaleDateString('en-US', {
@@ -28,7 +28,7 @@ const NewBulletin = ({ group, userId, id }) => {
     groups_id: id,
     is_important: false,
   });
-
+  
   const [profile, setProfile] = useState([]);
   useEffect(() => {
     axios
@@ -48,7 +48,7 @@ const NewBulletin = ({ group, userId, id }) => {
       })
       .catch((error) => console.warn('Error:', error));
   }, [userId]);
-
+  
 
 
 
@@ -123,5 +123,7 @@ const NewBulletin = ({ group, userId, id }) => {
     </div>
   );
 };
+
+export default NewBulletin;
 
 export default NewBulletin;

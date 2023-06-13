@@ -18,6 +18,7 @@ const NewGroup = () => {
         about: "",
         img: "not null",
         location: 'Manhattan',
+        location: 'Manhattan',
       })
 
       const navigate=useNavigate()
@@ -48,6 +49,7 @@ const NewGroup = () => {
       const handleLocationChange = (event) => {
         setGroups({ ...groups, location: event.target.value });
       };
+    
 
     return (
         <div>
@@ -98,6 +100,7 @@ const NewGroup = () => {
               <option value="Staten Island">Staten Island</option>
           </select>
           <br />
+
             <button type="submit">Save Group Info</button>
             <button onClick={() => setIsModalOpen(false)}>Cancel</button>
             </form>

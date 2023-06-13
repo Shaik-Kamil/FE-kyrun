@@ -5,8 +5,10 @@ import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
 import NewBulletin from "./NewBulletin";
+import NewBulletin from "./NewBulletin";
 const API = process.env.REACT_APP_API_URL
 
+function OneGroup ({ userId }) {
 function OneGroup ({ userId }) {
     const [group, setGroup] = useState([])
     const { id } = useParams()
@@ -22,6 +24,8 @@ function OneGroup ({ userId }) {
         .then((res) => {
             console.log(res.data)
             setGroup(res.data)
+            // if res.data.author ID === userId the state will be true if not then its false
+            setIsAuthor(res.data.author_id === userId);
             // if res.data.author ID === userId the state will be true if not then its false
             setIsAuthor(res.data.author_id === userId);
         })

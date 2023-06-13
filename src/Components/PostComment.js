@@ -62,20 +62,20 @@ const PostComment = ({ userId, group }) => {
   const [selectedCommentId, setSelectedCommentId] = useState(null);
 
 
-  const addPost = (newPost) => {
-    const authorId = userId; // Use the userId as the author_id for the post
-    // Post will be with userId
-    const postWithAuthorId = { ...newPost, author_id: authorId };
-      axios
-        .post(`${API}/posts/`, postWithAuthorId)
-        .then(
-          (response) => {
-            setComments([response.data, ...comments]);
-          },
-          (error) => console.error(error)
-        )
-        .catch((c) => console.warn("catch", c));
-    };
+const addPost = (newPost) => {
+  const authorId = userId; // Use the userId as the author_id for the post
+  // Post will be with userId
+  const postWithAuthorId = { ...newPost, author_id: authorId };
+    axios
+      .post(`${API}/posts/`, postWithAuthorId)
+      .then(
+        (response) => {
+          setComments([response.data, ...comments]);
+        },
+        (error) => console.error(error)
+      )
+      .catch((c) => console.warn("catch", c));
+  };
 
     const deletePost = (id) => {
       axios
