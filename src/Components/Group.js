@@ -8,10 +8,10 @@ import Bulletin from "./Bulletin";
 import '../CSS/GroupShow.css'
 const API = process.env.REACT_APP_API_URL
 
-function OneGroup ({ userId }) {
+function OneGroup ({ isJoined, setIsJoined, userId }) {
     const [group, setGroup] = useState([])
     const { id } = useParams()
-    const [isJoined, setIsJoined] = useState(false);
+    
 
     useEffect(() => {
         axios
@@ -107,9 +107,9 @@ function OneGroup ({ userId }) {
 
                 
 
-                {/* <div className='comments'>
-                    <PostComment />
-                </div> */}
+                <div className='comments'>
+                    <PostComment group={group} userId={userId} />
+                </div>
 
                 <div className='navi'>
                 <div className="join">

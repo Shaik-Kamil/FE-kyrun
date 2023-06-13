@@ -32,6 +32,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isJoined, setIsJoined] = useState(false);
   const [userId, setUserId] = useState(() => {
     const storedUserId = localStorage.getItem('userId');
     return storedUserId ? storedUserId : '';
