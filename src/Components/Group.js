@@ -5,16 +5,13 @@ import { Link, useParams } from "react-router-dom"
 import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
+import '../CSS/GroupShow.css'
 const API = process.env.REACT_APP_API_URL
 
 function OneGroup ({ userId }) {
     const [group, setGroup] = useState([])
     const { id } = useParams()
     const [isJoined, setIsJoined] = useState(false);
-
-    
-    
-
 
     useEffect(() => {
         axios
@@ -40,9 +37,6 @@ function OneGroup ({ userId }) {
           setIsJoined(false);
         }
       };
-    
-
-
 
   const handleJoin = async () => {
     try {
@@ -66,29 +60,56 @@ function OneGroup ({ userId }) {
     }
   };
 
-
-
-
     return (
         <article>
-            <div>
-                <h1 className='group-name'>{group.title}</h1>
-                <h3 className='group-description'>{group.about}</h3>
-
-                <img className='group-img' src={group.img} alt='group'></img>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        <div>
+          <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center" style={{padding: '30px'}}>
+                {/* <img className='group-img' src={group.img} alt='group'></img> */}
+                <h1 class="fw-bolder">Welcome to {group.title}</h1>
+                <p class="lead">{group.about}</p>
+                <p><GroupMembers group={group} id={id} /> </p>
+                <a class="btn btn-lg btn-light" href="#about">Start Scrolling</a>
+            </div>
+          </header>
+          <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Bulletin</h2>
+                          <p class="lead">
+                            <div>
+                              <Bulletin group={group} />
+                            </div>
+                          </p>
+                        <ul>
+                          <div className='comments'>
+                            <PostComment />
+                          </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+                {/* <h2 className='groups-name'>{group.title}</h2>
+                <h6 className='group-description'>{group.about}</h6> */}
 
 
                 <div>
                     <Bulletin group={group} />
                 </div>
 
-                <GroupMembers group={group} id={id} />
 
                 
 
-                <div className='comments'>
+                {/* <div className='comments'>
                     <PostComment />
-                </div>
+                </div> */}
 
                 <div className='navi'>
                 <div className="join">

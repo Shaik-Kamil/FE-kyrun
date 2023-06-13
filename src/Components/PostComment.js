@@ -2,6 +2,7 @@ import ReplyPost from './ReplyPost';
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import '../CSS/Comments.css'
 const API = process.env.REACT_APP_API_URL;
 
 
@@ -132,8 +133,10 @@ const addPost = (newPost) => {
         <div>
             <ul>
             {comments.map((comment) => (
-                <li key={comment.id}> {comment.post} {comment.date}<button onClick={() => toggleReplyForm(comment.id)}>reply</button> {' '} 
-                <button onClick={deletePost}>Delete</button>
+                <li key={comment.id}> {comment.post} {comment.date} 
+                <br />
+                <button onClick={() => toggleReplyForm(comment.id)}>Reply</button> {' '} 
+                 <button onClick={deletePost}>Delete</button>
                 <ul>
                     {replies
                     .filter((reply) => reply.post_id === comment.id)
@@ -159,6 +162,7 @@ const addPost = (newPost) => {
             <h1>Comment</h1>
             <form onSubmit={handleSubmit}>
             <label>Create a post:</label>
+
                 <input 
                 id='post'
                 type="text" 
@@ -168,6 +172,7 @@ const addPost = (newPost) => {
              />
             <br />
             <label>Date:</label>
+            
             <input 
                 id='date'
                 type="text" 
@@ -175,7 +180,9 @@ const addPost = (newPost) => {
                 onChange={handleTextChange}
                 required
              />
-             <button type="submit">Post Comment</button>
+             <br />
+             <br />
+              <button type="submit">Post Comment</button>
             </form>
         </div>
     );
