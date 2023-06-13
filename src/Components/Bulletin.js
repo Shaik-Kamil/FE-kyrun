@@ -19,9 +19,12 @@ useEffect(() => {
 
 return(
     <div>
+
+            <h1>Bulletin for <u>{group.title}</u></h1>
               {bulletin.map(group=><div>
-                <h1>{group.title}</h1>
+                 {group.title}
                 <h1>{group.message}</h1>
+                {group.is_important ? <p>❗</p> : null}
               </div>)}
     </div>
 )
