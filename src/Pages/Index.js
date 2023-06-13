@@ -12,7 +12,7 @@ const Index = ({ isJoined, setIsJoined, userId }) => {
         <div>
             <UserProfile />
             <EditProfile />
-            
+
             <NewGroup />
 
             <JoinedGroups 
@@ -23,10 +23,9 @@ const Index = ({ isJoined, setIsJoined, userId }) => {
             <DashBulletin userId={userId}/>
 
 
-            
+
             
         </div>
     );
 };
-
 export default Index;

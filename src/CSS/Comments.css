@@ -10,3 +10,8 @@ li {
     border-radius: 10px;
 }
 
+.author-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }

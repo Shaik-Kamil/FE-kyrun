@@ -7,15 +7,15 @@ import '../CSS/Groups.css';
 const Notifications = ({ group, userId }) => {
     return (
         <div>
-               
-                 
+
+
                  {group.is_important ? <h2>❗{group.message} </h2> : null}
                  <p><i>{group.date}</i> From <u> {group.groups}</u></p>
 
                  <br></br>
-               
 
-    
+
+
         </div>
     );
 };
