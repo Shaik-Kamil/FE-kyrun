@@ -17,6 +17,7 @@ const NewGroup = () => {
         title: "",
         about: "",
         img: "not null",
+        location: 'Manhattan',
       })
 
       const navigate=useNavigate()
@@ -43,6 +44,11 @@ const NewGroup = () => {
       const handleTextChange = (event) => {
         setGroups({ ...groups, [event.target.id]: event.target.value });
       };
+
+      const handleLocationChange = (event) => {
+        setGroups({ ...groups, location: event.target.value });
+      };
+    
 
     return (
         <div>
@@ -83,6 +89,16 @@ const NewGroup = () => {
                 required
                 />
              <br />
+             <br />
+          <label>Location:</label>
+          <select id="location" value={groups.location} onChange={handleLocationChange}>
+              <option value="Manhattan">Manhattan</option>
+              <option value="Queens">Queens</option>
+              <option value="Bronx">Bronx</option>
+              <option value="Brooklyn">Brooklyn</option>
+              <option value="Staten Island">Staten Island</option>
+          </select>
+          <br />
 
             <button type="submit">Save Group Info</button>
             <button onClick={() => setIsModalOpen(false)}>Cancel</button>

@@ -38,7 +38,7 @@ const NavBar = ({  userId }) => {
                         <li class="nav-item" style={{
                         padding: '10px'}}><Link to='/groups'>Explore Groups</Link></li>
                         <li class="nav-item" style={{
-                        padding: '10px'}}><Link to={`/userprofile/3`}>Profile</Link></li>
+                        padding: '10px'}}><Link to={`/userprofile/${userId}`}>Profile</Link></li>
                     </ul>
                 </div>
             </div>
