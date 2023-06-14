@@ -19,7 +19,6 @@ useEffect(() => {
 
 return(
     <div style={{paddingBottom: '50px'}}>
-
             <h1>Bulletin for <u>{group.title}</u></h1>
               {bulletin.map(group=><div class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px', position: 'relative', left: '30px'}}>
                  {group.title}

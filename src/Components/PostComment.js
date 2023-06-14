@@ -6,7 +6,7 @@ import '../CSS/Comments.css'
 const API = process.env.REACT_APP_API_URL;
 
 
-const PostComment = ({ userId, group }) => {
+const PostComment = ({ userId }) => {
 
 
   const today = new Date();
@@ -77,22 +77,40 @@ const addPost = (newPost) => {
       .catch((c) => console.warn("catch", c));
   };
 
-    const deletePost = (id) => {
-      axios
-        .delete(`${API}/posts/${id}`)
-        .then(
-          () => {
-            const copyPostArray = [...comments];
-            const indexDeletedPost = copyPostArray.findIndex((comment) => {
-              return comment.id === id;
-            });
-            copyPostArray.splice(indexDeletedPost, 1);
-            setComments(copyPostArray);
-          },
-          (error) => console.error(error)
-        )
-        .catch((c) => console.warn("catch", c));
-    };
+  const deletePost = (id) => {
+    axios
+      .delete(`${API}/posts/${id}`)
+      .then(
+        () => {
+          const copyPostArray = [...comments];
+          const indexDeletedPost = copyPostArray.findIndex((comment) => {
+            return comment.id === id;
+          });
+          copyPostArray.splice(indexDeletedPost, 1);
+          setComments(copyPostArray);
+        },
+        (error) => console.error(error)
+      )
+      .catch((c) => console.warn("catch", c));
+  };
+
+  const deleteReply = (id) => {
+    axios
+      .delete(`${API}/reply/${id}`)
+      .then(
+        () => {
+          const copyRepliesArray = [...replies];
+          const indexDeletedReply = copyRepliesArray.findIndex((reply) => {
+            return reply.id === id;
+          });
+          copyRepliesArray.splice(indexDeletedReply, 1);
+          setReplies(copyRepliesArray);
+        },
+        (error) => console.error(error)
+      )
+      .catch((c) => console.warn("catch", c));
+  };
+  
   
 
     const addReply = (newReply) => {
@@ -160,16 +178,29 @@ const addPost = (newPost) => {
         <button onClick={() => deletePost(comment.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '150px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Delete</button>
       )}
       
-                <ul>
-                  {replies
-                    .filter((reply) => reply.post_id === comment.id)
-                    .map((reply) => (
-                      <li key={reply.id}>
-                        {reply.reply} {reply.date}
-                      </li>
-                    ))}
-                </ul>
-              </li>
+      <ul>
+        {replies
+          .filter((reply) => reply.post_id === comment.id)
+          .map((reply) => {
+      const replyAuthor = profile.find((user) => user.id === reply.author_id);
+      if (replyAuthor) {
+        return (
+                <li key={reply.id}>
+            <b>
+              <img src={replyAuthor.img} alt={replyAuthor.first_name} className="author-image" /> {replyAuthor.first_name}:
+            </b>{" "}
+                  {reply.reply} {reply.date}
+            {parseInt(userId) === parseInt(reply.author_id) && (
+  <button onClick={() => deleteReply(reply.id)}>Delete</button>
+)}
+           </li>
+        );
+      } else {
+              return null;
+      }
+    })}
+      </ul>
+          </li>
             );
           } else {
             return null; // Skip rendering if comment author profile not found
