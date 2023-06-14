@@ -142,21 +142,22 @@ const addPost = (newPost) => {
 
     
     return (
-
-      <div>
-      <ul>
+      <div class="col-lg-10" style={{position: 'relative', left: '380px', display: 'grid'}}>
+      <h1>Comments</h1>
+      <ul class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
         {comments.map((comment) => {
           // to verify that the USERID matched with the author ID
           const commentAuthor = profile.find((user) => user.id === comment.author_id);
           if (commentAuthor) {
             return (
-              <li key={comment.id}>
+              <li key={comment.id} style={{fontSize: '20px'}}>
       
                 <b><img src={commentAuthor.img} alt={commentAuthor.first_name} className="author-image" /> {commentAuthor.first_name}:</b>{' '} {comment.post} {comment.date} {' '}
-                <button onClick={() => toggleReplyForm(comment.id)}>reply</button>{' '}
+                <br />
+                <button onClick={() => toggleReplyForm(comment.id)}className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '150px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Reply</button>{' '}
       
                 {parseInt(userId) === parseInt(comment.author_id) && (
-        <button onClick={() => deletePost(comment.id)}>Delete</button>
+        <button onClick={() => deletePost(comment.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '150px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Delete</button>
       )}
       
                 <ul>
@@ -175,19 +176,19 @@ const addPost = (newPost) => {
           }
         })}
       </ul>
-
             {showReplyForm && selectedCommentId && (
 
             <ReplyPost handleTextChangeReply={handleTextChangeReply}
             handleSubmitReply={handleSubmitReply}
             reply={reply}
+            
             />
             )}
 
 
-            <h1>Comment</h1>
-            <form onSubmit={handleSubmit}>
-            <label>Create a post:</label>
+            <h1>Leave A Comment</h1>
+            <form onSubmit={handleSubmit} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
+            <label style={{fontSize: '20px'}}> Comment: </label>
 
                 <input 
                 id='post'
@@ -197,7 +198,8 @@ const addPost = (newPost) => {
                 required
              />
             <br />
-            <label>Date:</label>
+            <br />
+            <label style={{fontSize: '20px'}}> Date: </label>
             
             <input 
                 id='date'
@@ -208,7 +210,7 @@ const addPost = (newPost) => {
              />
              <br />
              <br />
-              <button type="submit">Post Comment</button>
+              <button type="submit" className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Post Comment</button>
             </form>
         </div>
     );

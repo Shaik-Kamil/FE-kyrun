@@ -125,5 +125,3 @@ const NewBulletin = ({ group, userId, id }) => {
 };
 
 export default NewBulletin;
-
-export default NewBulletin;

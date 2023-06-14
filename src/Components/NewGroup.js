@@ -18,7 +18,6 @@ const NewGroup = () => {
         about: "",
         img: "not null",
         location: 'Manhattan',
-        location: 'Manhattan',
       })
 
       const navigate=useNavigate()

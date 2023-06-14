@@ -18,14 +18,16 @@ useEffect(() => {
 
 
 return(
-    <div>
+    <div style={{paddingBottom: '50px'}}>
 
             <h1>Bulletin for <u>{group.title}</u></h1>
-              {bulletin.map(group=><div>
+              {bulletin.map(group=><div class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px', position: 'relative', left: '30px'}}>
                  {group.title}
-                <h1>{group.message}</h1>
+                <h2>{group.message}</h2>
                 {group.is_important ? <p>❗</p> : null}
               </div>)}
+              <br />
+              <br />
     </div>
 )
 }

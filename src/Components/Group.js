@@ -5,18 +5,14 @@ import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
 import NewBulletin from "./NewBulletin";
-import NewBulletin from "./NewBulletin";
 const API = process.env.REACT_APP_API_URL
 
-function OneGroup ({ userId }) {
+
 function OneGroup ({ userId }) {
     const [group, setGroup] = useState([])
     const { id } = useParams()
     const [isAuthor, setIsAuthor] = useState(false);
     const [isJoined, setIsJoined] = useState(false);
-
-
-
 
     useEffect(() => {
         axios
@@ -33,6 +29,7 @@ function OneGroup ({ userId }) {
             console.warn("catch", c)
         })
     }, [id])
+
     useEffect(() => {
         checkMembershipStatus();
       }, [group.id, userId]);
@@ -78,12 +75,21 @@ function OneGroup ({ userId }) {
                     {/* <img className='group-img' src={group.img} alt='group'></img> */}
                     <h1 class="fw-bolder">Welcome to {group.title}</h1>
                     <p class="lead">{group.about}</p>
-                    <p><GroupMembers group={group} id={id} /></p>
-                    <a class="btn btn-lg btn-light" href="#about">Start Scrolling</a>
+                    <div className="join">
+                {isJoined ? (
+                  <>
+                    <h3>You are a member of the {group.title} community. </h3>
+                    <button onClick={handleLeave} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Leave Group</button>
+                  </>
+                ) : (
+                  <button onClick={handleJoin} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Join Group</button>
+                  )}
+              </div>
+                    {/* <a class="btn btn-lg btn-light" href="#about">Start Scrolling</a> */}
                 </div>
               </header>
               {isAuthor && (
-              <div>
+                <div>
                 <NewBulletin group={group} userId={userId} id={id} />
               </div>
             )}
@@ -92,12 +98,15 @@ function OneGroup ({ userId }) {
                     <div class="row gx-4 justify-content-center">
                         <div class="col-lg-8">
                               <p class="lead">
+                                <br />
                                 <div>
                                   <Bulletin group={group} />
                                 </div>
-                              </p>
+                                <br />
+                                <br />
+                              </p>    
                             <ul>
-                              <div className='comments'>
+                              <div className='comments' style={{position: 'relative', bottom: '100px'}}>
                                 <PostComment group={group} userId={userId} />
                               </div>
                             </ul>
@@ -105,28 +114,19 @@ function OneGroup ({ userId }) {
                     </div>
                 </div>
             </section>
-                    {/* <h2 className='groups-name'>{group.title}</h2>
-                    <h6 className='group-description'>{group.about}</h6> */}
-    
+                <div class="col-lg-4" style={{ position: 'relative', left: '50px', bottom: '655px', marginTop: '20px'}}>
+                  
+                  <p class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}><img src={group.img} style={{width: '250px', height: '250px', padding: '20px'}}></img>
+                  <GroupMembers group={group} id={id} />
+                  </p>
+                </div>
                     <div className='navi'>
-                    <div className="join">
-                {isJoined ? (
-                  <>
-                    <h3>Welcome to the {group.title} community. </h3>
-                    <button onClick={handleLeave}>Leave Group</button>
-                  </>
-                ) : (
-                  <button onClick={handleJoin}>Join Group</button>
-                )}
-              </div>
-                
                         <div className='back'>
                             <Link to={`/groups`}>
-                                <button>Back</button>
+                                <button className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Back</button>
                             </Link>
                         </div>
                     </div>
-    
                 </div>
             </article>
         );

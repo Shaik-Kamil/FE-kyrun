@@ -1,25 +1,29 @@
 import React from 'react';
+import axios from "axios";
+import { useNavigate } from "react";
 import { Link, useParams } from "react-router-dom";
 import logo from '../images/LOGO.png'
 import '../CSS/NavBar.css'
+const API = process.env.REACT_APP_API_URL
 // import Login from '../Pages/Login';
 // import LoginPage from './LoginPage';
 
 
 const NavBar = ({ userId }) => {
-//     const { id } = useParams();
+    const { id } = useParams();
+    // const navigate = useNavigate()
 
-//     const addProfile = (userId) => {
-//         axios
-//           .post(`${API}/users`, id)
-//           .then(
-//             () => {
-//               navigate(`/userprofile/${id}`);
-//             },
-//             (error) => console.error(error)
-//           )
-//           .catch((c) => console.warn("catch", c));
-//     };
+    // const addProfile = (userId) => {
+    //     axios
+    //       .post(`${API}/users`, id)
+    //       .then(
+    //         () => {
+    //           navigate(`/userprofile/${id}`);
+    //         },
+    //         (error) => console.error(error)
+    //       )
+    //       .catch((c) => console.warn("catch", c));
+    // };
 
     return (
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style={{paddingBottom: '2px', paddingTop: '2px'}}>
@@ -39,7 +43,7 @@ const NavBar = ({ userId }) => {
                         <li class="nav-item" style={{
                         padding: '10px'}}><Link to={`/userprofile/${userId}`}>Profile</Link></li>
                         <li class="nav-item" style={{
-                        padding: '10px'}}><Link to={`/routes`}>Routes</Link></li>
+                        padding: '10px'}}><Link to={`/runningroutes/`}>Routes</Link></li>
                     </ul>
                 </div>
             </div>
