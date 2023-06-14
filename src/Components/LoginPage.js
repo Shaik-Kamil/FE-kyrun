@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import '../CSS/LoginPage.css'
 const API = process.env.REACT_APP_API_URL;
 
 function LoginPage({ userId, setUserId }) {
@@ -67,38 +68,39 @@ function LoginPage({ userId, setUserId }) {
 
   return (
     <div>
-      <h2>
-        {/* <img src={logo} alt="logo"></img> */}
-        <br />
-        <Link to="/users">Login</Link>
-      </h2>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <form onSubmit={handleFormSubmit}>
-        <h1>{isRegistering ? 'Register' : 'Log In'}</h1>
-        <div className="field">
-          <label htmlFor="email">Email:</label>
+        <h1 style={{marginBottom: '50px'}}>{isRegistering ? 'Register' : 'Log In'}</h1>
+        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px', backgroundColor: '#5271FF'}}>
+          <label htmlFor="email" className="input__label">Email:</label>
           <input
+            class='input__input'
             type="text"
             id="email"
             name="email"
-            placeholder="Enter your Email Address"
             value={email}
             onChange={handleEmailChange}
+            style={{border: 'none', outline: 'none', left: '30px', bottom: '0px', width: '240px', backgroundColor: '#5271FF'}}
           />
           <small></small>
         </div>
-        <div className="field">
-          <label htmlFor="password">Password:</label>
+        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px', backgroundColor: '#5271FF'}}>
+          <label htmlFor="password" className="input__label">Password:</label>
           <input
+            class='input__input'
             type="password"
             id="password"
             name="password"
-            placeholder="Enter your Password"
             value={password}
             onChange={handlePasswordChange}
+            style={{border: 'none', outline: 'none', left: '60px', bottom: '0px', width: '210px', backgroundColor: '#5271FF'}}
           />
           <small></small>
         </div>
-        {/* {isRegistering && (
+        {isRegistering && (
           <div className="field">
             <label htmlFor="confirm-password">Confirm Password:</label>
             <input
@@ -111,18 +113,18 @@ function LoginPage({ userId, setUserId }) {
             />
             <small></small>
           </div>
-        )} */}
-        <button type="submit">{isRegistering ? 'Register' : 'Log In'}</button>
+        )}
+        <button type="submit" className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '175px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>{isRegistering ? 'Register' : 'Log In'}</button>
       </form>
-      <p>
+      <p style={{margin: '30px'}}>
         {isRegistering ? (
           <>
-            Already have an account?{' '}
-            <button onClick={handleFormSubmit}>Log In</button>
+            <h4 style={{textAlign: 'center'}}>Already have an account?{' '}</h4>
+            <button onClick={handleFormSubmit} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', width: '175px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Log In</button>
           </>
         ) : (
           <>
-            Don't have an account? <button>Register</button>
+            <h4 style={{textAlign: 'center'}}>Don't have an account?</h4> <button className='borderman btn-border' style={{border: 'none', outline: 'none', padding:'10px', backgroundColor: '#F18701', borderRadius: '5px', width: '175px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Register</button>
           </>
         )}
       </p>
