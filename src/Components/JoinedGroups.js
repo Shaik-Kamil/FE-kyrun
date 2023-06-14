@@ -25,7 +25,7 @@ const JoinedGroups = ({ userId }) => {
     return (
         <div>
      <h1>Joined Groups</h1>
-     <p>Number of groups joined: {numJoinedGroups}</p>
+     <h2>Number of groups joined: {numJoinedGroups}</h2>
       
       {joinedGroup.map((group) => {
         console.log(group)

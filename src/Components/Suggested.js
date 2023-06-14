@@ -29,8 +29,9 @@ const Suggested = () => {
         console.log(group)
               return <GroupDetails key={group.id} group={group} />;
             })}
+            <br />
         <Link to={`/groups`}>
-      <button>View More Groups</button>
+      <button className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>View More Groups</button>
         </Link>
 
     </div>
