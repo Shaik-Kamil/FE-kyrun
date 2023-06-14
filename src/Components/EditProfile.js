@@ -53,7 +53,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div>
+    <div style={{float: 'right'}}>
       <h1>Edit your Profile</h1>
       <button onClick={() => setIsModalOpen(true)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Edit Profile</button>
       <Modal
