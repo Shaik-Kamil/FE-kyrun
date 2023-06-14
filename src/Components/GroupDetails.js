@@ -18,9 +18,9 @@ const GroupDetails = ({group}) => {
     }
 
     return (
-        <div className='group-list'>
+        <div className='group-list' style={{paddingLeft: '50px'}}>
             <Link to={`/groups/${group.id}`}>
-            <img src={group.img} className='group-images' alt='group portrait'></img>
+            <img src={group.img} className='group-images' alt='group portrait' ></img>
             
             <h2 className='group-name'>{group.title}</h2>
             </Link>
