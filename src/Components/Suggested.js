@@ -21,8 +21,8 @@ const Suggested = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Suggested Groups</h1>
+    <div style={{float: 'right', position: 'relative', right: '10px', bottom: '350px', }}>
+      <h1 style={{position: 'relative', right: '10px'}}>Suggested Groups</h1>
       
       
       {groups.map((group) => {
