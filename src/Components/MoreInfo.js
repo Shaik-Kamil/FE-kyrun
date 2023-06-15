@@ -1,9 +1,7 @@
 import React from 'react';
 import runningWomen from '../images/women-running-outside.webp'
-// import group1 from '../images/full-shot-people-running-together-outdoors_23-2149037622.avif'
 import group2 from '../images/rw-imagelibrary2020-hires-401-1675366389.jpg'
 import group3 from '../images/running-buddies.jpg'
-// import kyrunGif from '../images/KYRUN.gif'
 import kyrunGif2 from '../images/KYRUN (Billboard (Landscape) - 2592 x 864 px).gif'
 
 
@@ -18,24 +16,17 @@ function MoreInfo(props) {
                     <img class="img-fluid" src={kyrunGif2} 
                         style={{
                             height: '500px', width: '2592px', paddingBottom: '20px'}} alt="..." />
-                            <a class="btn btn-primary" href="#about">What's Kyrun?</a>
-                        {/* <h1 class="mx-auto my-0 text-uppercase">Kyrun</h1> */}
-                        {/* <h2 class="text-white-50 mx-auto mt-2 mb-5">Safety In Numbers.</h2> */}
+                            <a class="btn btn-primary" href="#about" style={{position: 'absolute', top: '58%', left: '45%', backgroundColor:'#F18701', border: '#F18701', color: '#FFFFFF'}}>What's Kyrun?</a>
                     </div>
                 </div>
             </div>
-        </header>
-            {/* <section className=''>
-                <h1>Kyrun</h1>
-                <p>Safety In Numbers.</p>
-                {/* add image */}
-            {/* </section> */} 
+        </header> 
             <section class="about-section text-center" id="about"
             style={{
                 paddingTop: '50px'}}>
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8" style={{ paddingBottom: '50px', paddingTop: '50px'}} >
+                    <div class="col-lg-8" style={{ paddingBottom: '50px', paddingTop: '10px'}} >
                         <h2 class="text-212529 mb-4">There's Safety In Numbers.</h2>
                         <p class="text-212529-50">
                             Many people do not feel safe jogging alone, even in broad daylight. That's where Kyrun comes in. Kyrun allows you to find likeminded people who want to feel safe while achieving their fitness goals.
@@ -89,19 +80,6 @@ function MoreInfo(props) {
                 </div>
             </div>
         </section>
-        {/* <section className='fade-in'>
-                <h2>Find a group that suits your running lifestyle and start building a fitness network.</h2>
-                <p>With Kyrun, you can search through countless groups to join or create your own group and safely begin your jouney!</p>
-                {/* add image that demonstrates a filter */}
-        {/* </section> */} 
-            {/* <section className='fade-in'>
-                <h2>Not sure where to run?</h2>
-                <p>Kyrun also offers suggestions for each borough for you and your new running buddies to explore! </p>
-                {/* add image */}
-            {/* </section>  */}
-            
-            {/* <p className='fade-in'>Build your network today!</p> */}
-
       </div>
     );
 }

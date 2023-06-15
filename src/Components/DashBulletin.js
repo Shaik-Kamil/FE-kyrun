@@ -44,7 +44,10 @@ const DashBulletin = ({ userId }) => {
 
   return (
     <div>
-        <h1><u>Important Bulletins From Your Groups:</u></h1>
+        <h2 style={{float: 'left', paddingLeft: '50px'}}><u>Important Bulletins From Your Groups:</u></h2>
+
+                 <br></br>
+                 <br></br>
                  <br></br>
       {bulletin.map((group) => (
         <Notifications key={group.id} group={group} />

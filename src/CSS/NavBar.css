@@ -1,3 +1,25 @@
 nav {
     background-color: #FFFFFF;
+    text-decoration: none;
 }
+
+.nav-item {
+    text-decoration: none;
+    color: #F18701;
+}
+
+a:link {
+    color: #F18701;
+  }
+  /* visited link */
+  a:visited {
+    color: #F18701;
+  }
+  /* mouse over link */
+  a:hover {
+    color: #faa73b;
+  }
+  /* selected link */
+  a:active {
+    color: #F18701;
+  }

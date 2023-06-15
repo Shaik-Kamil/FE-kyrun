@@ -52,9 +52,9 @@ const NewGroup = ({userId}) => {
     
 
     return (
-        <div>
+        <div style={{position: 'relative', bottom: '780px', float: 'right'}}>
             <h1>CREATE A NEW GROUP</h1>
-            <button onClick={() => setIsModalOpen(true)}>New Group</button>
+            <button onClick={() => setIsModalOpen(true)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>New Group</button>
             <Modal 
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
@@ -101,8 +101,8 @@ const NewGroup = ({userId}) => {
           </select>
           <br />
 
-            <button type="submit">Save Group Info</button>
-            <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+            <button type="submit" className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Save Group Info</button>
+            <button onClick={() => setIsModalOpen(false)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Cancel</button>
             </form>
             </Modal>
 
