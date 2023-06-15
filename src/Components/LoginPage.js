@@ -67,12 +67,12 @@ function LoginPage({ userId, setUserId }) {
 
 
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection: 'column'}}>
       <br></br>
       <br></br>
       <br></br>
       <br></br>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} style={{width: '100%', padding: '0.5 em;'}}>
         <h1 style={{marginBottom: '50px'}}>{isRegistering ? 'Register' : 'Log In'}</h1>
         <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px', backgroundColor: '#5271FF'}}>
           <label htmlFor="email" className="input__label">Email:</label>

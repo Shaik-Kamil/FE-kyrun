@@ -161,7 +161,7 @@ const addPost = (newPost) => {
     
     return (
       <div class="col-lg-10" style={{position: 'relative', left: '380px', display: 'grid'}}>
-      <h1>Comments</h1>
+      <h1>Posts</h1>
       <ul class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
         {comments.map((comment) => {
           // to verify that the USERID matched with the author ID
@@ -191,7 +191,7 @@ const addPost = (newPost) => {
             </b>{" "}
                   {reply.reply} {reply.date}
             {parseInt(userId) === parseInt(reply.author_id) && (
-  <button onClick={() => deleteReply(reply.id)}>Delete</button>
+  <button onClick={() => deleteReply(reply.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '150px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Delete</button>
 )}
            </li>
         );
@@ -217,9 +217,9 @@ const addPost = (newPost) => {
             )}
 
 
-            <h1>Leave A Comment</h1>
+            <h1>Create a Post</h1>
             <form onSubmit={handleSubmit} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
-            <label style={{fontSize: '20px'}}> Comment: </label>
+            <label style={{fontSize: '20px'}}> Post: </label>
 
                 <input 
                 id='post'

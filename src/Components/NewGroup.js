@@ -51,9 +51,9 @@ const NewGroup = () => {
     
 
     return (
-        <div style={{position: 'relative', bottom: '780px', float: 'right'}}>
-            <h1>CREATE A NEW GROUP</h1>
-            <button onClick={() => setIsModalOpen(true)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>New Group</button>
+        <div>
+            <h1 style={{display: 'flex', flexDirection: 'column', textAlign: 'center', position: 'absolute', left: '870px', top: '950px' }}>Create A New Group</h1>
+            <button onClick={() => setIsModalOpen(true)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF', position: 'absolute', left: '950px', top: '1020px'}}>New Group</button>
             <Modal 
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
