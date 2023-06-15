@@ -13,7 +13,7 @@ const Index = ({ isJoined, setIsJoined, userId }) => {
             <UserProfile />
             <EditProfile />
             
-            <NewGroup />
+            <NewGroup userId={userId} />
 
             <JoinedGroups 
             userId={userId} />
