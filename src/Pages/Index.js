@@ -14,7 +14,8 @@ const Index = ({ isJoined, setIsJoined, userId }) => {
             <DashBulletin userId={userId}/>
             <EditProfile />
 
-            <NewGroup />
+            
+            <NewGroup userId={userId} />
 
             <JoinedGroups 
             userId={userId} />
