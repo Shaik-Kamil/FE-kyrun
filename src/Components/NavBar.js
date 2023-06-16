@@ -44,6 +44,8 @@ const NavBar = ({ userId }) => {
                         padding: '10px'}}><Link to={`/userprofile/${userId}`}>Profile</Link></li>
                         <li class="nav-item" style={{
                         padding: '10px'}}><Link to={`/runningroutes/`}>Routes</Link></li>
+                        {/* <li class="nav-item" style={{
+                        padding: '10px'}}><Link to={`/about/`}>About Us</Link></li> */}
                     </ul>
                 </div>
             </div>

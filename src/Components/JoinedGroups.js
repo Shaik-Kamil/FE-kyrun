@@ -23,16 +23,16 @@ const JoinedGroups = ({ userId }) => {
 
 
     return (
-        <div style={{float: 'right', position: 'relative', bottom: '400px'}}>
-     <h1 style={{position: 'relative', right: '50px'}}>Joined Groups</h1>
-     <h2 style={{position: 'relative', right: '50px'}}>Number of groups joined: {numJoinedGroups}</h2>
+      <div style={{display: 'inline-block', textAlign: 'center', position: 'absolute', left: '750px', top: '1150px' }}>
+          <h1>Groups Joined: {numJoinedGroups}</h1>
+          {/* <h1>Joined Groups</h1> */}
       
       {joinedGroup.map((group) => {
-        console.log(group)
+        // console.log(group)
               return <GroupDetails key={group.id} group={group} />;
             })}
             
-        </div>
+      </div>
     );
 };
 

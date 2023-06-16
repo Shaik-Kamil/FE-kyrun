@@ -21,7 +21,7 @@ const Suggested = () => {
   }, []);
 
   return (
-    <div style={{float: 'right', position: 'relative', right: '10px', bottom: '350px', }}>
+    <div style={{position: 'relative', left: '50px', top: '400px', }}>
       <h1 style={{position: 'relative', right: '10px'}}>Suggested Groups</h1>
       
       
