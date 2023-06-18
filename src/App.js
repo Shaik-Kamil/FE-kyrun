@@ -136,7 +136,7 @@ function App() {
           <Route path="/runningroutes/" element={<RunningRoutes />} />
           <Route path="*" onClick={handleRegister} element={<FourOFour />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
 
       {/* <img src={logo} alt="Logo" /> */}

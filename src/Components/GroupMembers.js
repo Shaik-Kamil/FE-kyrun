@@ -42,7 +42,7 @@ const GroupMembers = ({ group, id }) => {
 
     return (
         <div>
-            <h3>Number of members in this group:</h3> <button onClick={() => setIsModalOpen(true)}>{profileCount}</button> 
+            <h3>Number of members in this group:</h3> <button onClick={() => setIsModalOpen(true)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>{profileCount}</button> 
             <Modal 
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
@@ -51,13 +51,8 @@ const GroupMembers = ({ group, id }) => {
         console.log(member)
               return <Members key={member.id} member={member} />;
             })}
-            <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+            <button onClick={() => setIsModalOpen(false)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Cancel</button>
             </Modal>
-
-
-
-
-            
         </div>
     );
 };

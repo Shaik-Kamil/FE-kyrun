@@ -24,9 +24,13 @@ const Groups = ({userId}) => {
 
   return (
     <div>
-      <h1>Filter Groups by Title or Location</h1>
-      
-      
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <h1>Filter Groups by Title</h1>
+      <GroupFilter groups={groups} setFilteredGroups={setFilteredGroups} />
       
       {filteredGroups.map((group) => {
         console.log(group)
