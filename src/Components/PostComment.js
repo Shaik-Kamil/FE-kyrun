@@ -1,71 +1,61 @@
-import ReplyPost from './ReplyPost';
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import '../CSS/comment.css'
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import '../CSS/comment.css';
+import ReplyPost from './ReplyPost';
+
 const API = process.env.REACT_APP_API_URL;
 
-
 const PostComment = ({ userId }) => {
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString();
+  const { id } = useParams();
 
+  const [profile, setProfile] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [replies, setReplies] = useState([]);
+  const [reply, setReply] = useState({
+    reply: '',
+    date: formattedDate,
+    posts_id: id,
+    author_id: id,
+    groups_id: id
+  });
 
-    const today = new Date();
-    const formattedDate = today.toLocaleDateString();
-    const { id } = useParams()
-  
-
-    // const navigate=useNavigate()
-    const [profile, setProfile] =useState([])
-    const [comments, setComments]= useState([])
-    useEffect(() => {
-        axios
-        .get(`${API}/posts/${id}`)
-        .then((res) => setComments(res.data))
-        .catch((c) => console.warn("catch", c));
-    }, [id])
-
-    useEffect(() => {
-      axios
-      .get(`${API}/users/`)
-      .then((res) => setProfile(res.data))
-      .catch((c) => console.warn("catch", c));
-  }, [id])
-
-    const [replies, setReplies]= useState([])
-    useEffect(() => {
-        axios
-        .get(`${API}/reply/`)
-        .then((res) => setReplies(res.data))
-        .catch((c) => console.warn("catch", c));
-
-    },[id])
-
-
-
-    const [reply, setReply]= useState({
-        reply:"",
-        date: `${formattedDate}`,
-        posts_id: `${id}`,
-        author_id: `${id}`,
-        groups_id: `${id}`
-    })
-
-    // variables to hold info
   const [post, setPost] = useState({
-    post:"",
-    date: `${formattedDate}`,
-    author_id: `${id}`,
-    groups_id: `${id}`
+    post: '',
+    date: formattedDate,
+    author_id: id,
+    groups_id: id
   });
 
   const [showReplyForm, setShowReplyForm] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
 
+  useEffect(() => {
+    axios
+      .get(`${API}/posts/${id}`)
+      .then((res) => setComments(res.data))
+      .catch((c) => console.warn('catch', c));
+  }, [id]);
 
-const addPost = (newPost) => {
-  const authorId = userId; // Use the userId as the author_id for the post
-  // Post will be with userId
-  const postWithAuthorId = { ...newPost, author_id: authorId };
+  useEffect(() => {
+    axios
+      .get(`${API}/users/`)
+      .then((res) => setProfile(res.data))
+      .catch((c) => console.warn('catch', c));
+  }, [id]);
+
+  useEffect(() => {
+    axios
+      .get(`${API}/reply/`)
+      .then((res) => setReplies(res.data))
+      .catch((c) => console.warn('catch', c));
+  }, [id]);
+
+  const addPost = (newPost) => {
+    const authorId = userId;
+    const postWithAuthorId = { ...newPost, author_id: authorId };
     axios
       .post(`${API}/posts/`, postWithAuthorId)
       .then(
@@ -74,7 +64,7 @@ const addPost = (newPost) => {
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn("catch", c));
+      .catch((c) => console.warn('catch', c));
   };
 
   const deletePost = (id) => {
@@ -91,7 +81,7 @@ const addPost = (newPost) => {
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn("catch", c));
+      .catch((c) => console.warn('catch', c));
   };
 
   const deleteReply = (id) => {
@@ -108,17 +98,15 @@ const addPost = (newPost) => {
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn("catch", c));
+      .catch((c) => console.warn('catch', c));
   };
-  
-  
 
   const addReply = (newReply) => {
     const reply1 = {
-        ...newReply,
-        author_id: userId,
-        post_id: selectedCommentId 
-      };
+      ...newReply,
+      author_id: userId,
+      post_id: selectedCommentId
+    };
 
     axios
       .post(`${API}/reply`, reply1)
@@ -128,7 +116,7 @@ const addPost = (newPost) => {
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn("catch", c));
+      .catch((c) => console.warn('catch', c));
   };
 
   const handleSubmit = (event) => {
@@ -139,9 +127,8 @@ const addPost = (newPost) => {
   const handleSubmitReply = (event) => {
     event.preventDefault();
     addReply(reply);
-    setShowReplyForm(false)
+    setShowReplyForm(false);
   };
-
 
   const handleTextChange = (event) => {
     setPost({ ...post, [event.target.id]: event.target.value });
@@ -151,94 +138,87 @@ const addPost = (newPost) => {
     setReply({ ...reply, [event.target.id]: event.target.value });
   };
 
-
   const toggleReplyForm = (commentId) => {
     setShowReplyForm(!showReplyForm);
     setSelectedCommentId(commentId);
   };
 
+  return (
+    <div>
+      <ul>
+        {comments.map((comment) => {
+          const commentAuthor = profile.find((user) => user.id === comment.author_id);
+          if (commentAuthor) {
+            return (
+              <li key={comment.id}>
+                <div className="comment-wrapper">
+                  <div className="comment-content">
+                    <b>
+                      <img src={commentAuthor.img} alt={commentAuthor.first_name} className="author-image" />{' '}
+                      {commentAuthor.first_name}:
+                    </b>{' '}
+                    {comment.post} {comment.date}
+                  </div>
+                  <div className="comment-actions">
+                    <button onClick={() => toggleReplyForm(comment.id)}>Reply</button>
+                    {parseInt(userId) === parseInt(comment.author_id) && (
+                      <button onClick={() => deletePost(comment.id)}>Delete</button>
+                    )}
+                  </div>
+                  {showReplyForm && selectedCommentId === comment.id && (
+                    <ReplyPost
+                      handleTextChangeReply={handleTextChangeReply}
+                      handleSubmitReply={handleSubmitReply}
+                      reply={reply}
+                    />
+                  )}
+                </div>
+                <ul>
+                  {replies
+                    .filter((reply) => reply.post_id === comment.id)
+                    .map((reply) => {
+                      const replyAuthor = profile.find((user) => user.id === reply.author_id);
+                      if (replyAuthor) {
+                        return (
+                          <li key={reply.id}>
+                            <div className="reply-wrapper">
+                              <div className="reply-content">
+                                <b>
+                                  <img src={replyAuthor.img} alt={replyAuthor.first_name} className="author-image" />{' '}
+                                  {replyAuthor.first_name}:
+                                </b>{' '}
+                                {reply.reply} {reply.date}
+                              </div>
+                              <div className="reply-actions">
+                                {parseInt(userId) === parseInt(reply.author_id) && (
+                                  <button onClick={() => deleteReply(reply.id)}>Delete</button>
+                                )}
+                              </div>
+                            </div>
+                          </li>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })}
+                </ul>
+              </li>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </ul>
 
-    
-    return (
-
-        <div>
-<ul>
-  {comments.map((comment) => {
-    // to verify that the USERID matched with the author ID
-    const commentAuthor = profile.find((user) => user.id === comment.author_id);
-    if (commentAuthor) {
-      return (
-        <li key={comment.id}>
-
-          <b><img src={commentAuthor.img} alt={commentAuthor.first_name} className="author-image" /> {commentAuthor.first_name}:</b>{' '} {comment.post} {comment.date} {' '}
-          <button onClick={() => toggleReplyForm(comment.id)}>reply</button>{' '}
-         
-          {parseInt(userId) === parseInt(comment.author_id) && (
-  <button onClick={() => deletePost(comment.id)}>Delete</button>
-)}
-
-<ul>
-  {replies
-    .filter((reply) => reply.post_id === comment.id)
-    .map((reply) => {
-      const replyAuthor = profile.find((user) => user.id === reply.author_id);
-      if (replyAuthor) {
-        return (
-          <li key={reply.id}>
-            <b>
-              <img src={replyAuthor.img} alt={replyAuthor.first_name} className="author-image" /> {replyAuthor.first_name}:
-            </b>{" "}
-            {reply.reply} {reply.date}
-            {parseInt(userId) === parseInt(reply.author_id) && (
-  <button onClick={() => deleteReply(reply.id)}>Delete</button>
-)}
-     </li>
-        );
-      } else {
-        return null;
-      }
-    })}
-</ul>
-    </li>
-      );
-    } else {
-      return null; // Skip rendering if comment author profile not found
-    }
-  })}
-</ul>
-
-            {showReplyForm && selectedCommentId && (
-
-            <ReplyPost handleTextChangeReply={handleTextChangeReply}
-            handleSubmitReply={handleSubmitReply}
-            reply={reply}
-            />
-            )}
-
-
-            <h1>Comment</h1>
-            <form onSubmit={handleSubmit}>
-            <label>Create a post:</label>
-                <input 
-                id='post'
-                type="text" 
-                value={post.post}
-                onChange={handleTextChange}
-                required
-             />
-            <br />
-            <label>Date:</label>
-            <input 
-                id='date'
-                type="text" 
-                value={post.date}
-                onChange={handleTextChange}
-                required
-             />
-             <button type="submit">Post Comment</button>
-            </form>
-        </div>
-    );
+      <h1>Comment</h1>
+      <form onSubmit={handleSubmit}>
+        <label>Create a post:</label>
+        <input id="post" type="text" value={post.post} onChange={handleTextChange} required />
+        <br />
+        <button type="submit">Post Comment</button>
+      </form>
+    </div>
+  );
 };
 
 export default PostComment;

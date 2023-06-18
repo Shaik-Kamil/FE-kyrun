@@ -6,6 +6,7 @@ import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
 import NewBulletin from "./NewBulletin";
+import Invite from "./Invite";
 const API = process.env.REACT_APP_API_URL
 
 function OneGroup ({ userId }) {
@@ -14,10 +15,6 @@ function OneGroup ({ userId }) {
     const [isAuthor, setIsAuthor] = useState(false);
     const [isJoined, setIsJoined] = useState(false);
     
-
-    
-    
-
 
     useEffect(() => {
         axios
@@ -112,7 +109,7 @@ function OneGroup ({ userId }) {
               <button onClick={handleJoin}>Join Group</button>
             )}
           </div>
-            
+            <Invite />
                     <div className='back'>
                         <Link to={`/groups`}>
                             <button>Back</button>

@@ -10,7 +10,7 @@ import Modal from 'react-modal';
 // img TEXT NOT NULL
 const API = process.env.REACT_APP_API_URL;
 
-const NewGroup = ({userId}) => {
+const NewGroup = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
     const [groups, setGroups] = useState({
@@ -18,7 +18,6 @@ const NewGroup = ({userId}) => {
         about: "",
         img: "not null",
         location: 'Manhattan',
-        author_id: userId
       })
 
       const navigate=useNavigate()

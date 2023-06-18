@@ -9,9 +9,11 @@ const ReplyPost = ({ handleSubmitReply, handleTextChangeReply, reply }) => {
 
     return (
         <div>
-            <h1>Reply</h1>
+            
+            <br></br>
+        
             <form onSubmit={handleSubmitReply}>
-            <label>Reply post:</label>
+            <label>Reply:</label>
                 <input 
                 id='reply'
                 type="text" 
@@ -20,14 +22,7 @@ const ReplyPost = ({ handleSubmitReply, handleTextChangeReply, reply }) => {
                 required
              />
             <br />
-            <label>Date:</label>
-            <input 
-                id='date'
-                type="text" 
-                value={reply.date}
-                onChange={handleTextChangeReply}
-                required
-             />
+            
 
              <button type="submit">Post Reply</button>
             </form>
