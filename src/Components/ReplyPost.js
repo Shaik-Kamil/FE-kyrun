@@ -9,9 +9,9 @@ const ReplyPost = ({ handleSubmitReply, handleTextChangeReply, reply }) => {
 
     return (
         <div>
-            <h1>Reply</h1>
-            <form onSubmit={handleSubmitReply}>
-            <label>Reply post:</label>
+            
+            <form onSubmit={handleSubmitReply} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
+            <label>Reply Post:</label>
                 <input 
                 id='reply'
                 type="text" 
@@ -20,16 +20,8 @@ const ReplyPost = ({ handleSubmitReply, handleTextChangeReply, reply }) => {
                 required
              />
             <br />
-            <label>Date:</label>
-            <input 
-                id='date'
-                type="text" 
-                value={reply.date}
-                onChange={handleTextChangeReply}
-                required
-             />
-
-             <button type="submit">Post Reply</button>
+            <br />
+             <button type="submit" className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Post Reply</button>
             </form>
             
         </div>

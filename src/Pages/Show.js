@@ -1,18 +1,19 @@
 import React from 'react';
-import Bulletin from '../Components/Bulletin';
-
 import Group from '../Components/Group';
 
 
-const Show = ({ setUserId, userId }) => {
+const Show = ({ setUserId, userId, isJoined, setIsJoined }) => {
     return (
         <div>
             <Group 
             setUserId={setUserId} 
-            userId={userId}/>
+            userId={userId}
+            setIsJoined={setIsJoined}
+            isJoined={isJoined}
+            />
+
 
         </div>
     );
 };
-
 export default Show;

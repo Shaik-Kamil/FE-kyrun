@@ -4,11 +4,14 @@
     width: 200px;
     height: 200px;
     border-radius: 7px;
-    padding-bottom: 3px;
+    /* padding-bottom: 2px; */
+    border: 2px solid #F18701
 }
 
 .group-name {
-    padding: 10px;
+    padding-top: 10px;
+    list-style: none;
+    padding-right: 65px;
 }
 
 .group-list {
@@ -16,7 +19,7 @@
     text-align: center;
     width: 270px;
     height: 200px;
-    padding: 20px;
+    padding-top: 20px;
     margin: 17px;
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import ReactModal from 'react-modal';
 import EditUser from './Pages/EditUser';
@@ -32,10 +32,15 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isJoined, setIsJoined] = useState(false);
   const [userId, setUserId] = useState(() => {
     const storedUserId = localStorage.getItem('userId');
     return storedUserId ? storedUserId : '';
   });
+  
+  useEffect(() => {
+    localStorage.setItem('userId', userId);
+  }, [userId]);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -131,7 +136,7 @@ function App() {
           <Route path="/runningroutes/" element={<RunningRoutes />} />
           <Route path="*" onClick={handleRegister} element={<FourOFour />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
 
       {/* <img src={logo} alt="Logo" /> */}

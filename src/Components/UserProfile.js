@@ -26,16 +26,75 @@ const UserProfile = () => {
 
 
     return (
-        <div>
-        
-            <img src={profile.img} alt="Profile Image" /> 
-            <h1> {profile.first_name} {profile.last_name}</h1>   
-            <p>Gender: {profile.gender}</p>
-            <p>Running Pace: {profile.pace}</p>
-            <p>Age: {profile.age}</p>
-            <p>Zipcode: {profile.zipcode}</p>
-
-            {/* <button onClick={handleDelete}>Delete account</button> */}
+        <div class="row">
+          <div class="card-body">
+            <div class="chart-pie pt-1 pb-2">
+              <canvas id="myPieChart"></canvas>
+            </div>
+            <img src={profile.img} alt="Profile" style={{width: '400px', height: '400px', borderRadius: '20px', marginBottom: '20px'}} />  
+        </div>
+            <h1 style={{marginBottom: '20px'}}> {profile.first_name} {profile.last_name}</h1> 
+            <div class="col-xl-3 col-md-6 mb-4" style={{width: '300px', height: '100px', marginLeft: '150px'}}>
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Gender:</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{profile.gender}</div>
+                                </div>
+                                <div class="col-auto">
+                                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+            <div class="col-xl-3 col-md-6 mb-4" style={{width: '300px', height: '100px'}}>
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Running Pace:</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{profile.pace}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+              </div>
+              <div class="col-xl-3 col-md-6 mb-4" style={{width: '300px', height: '100px'}}>
+                   <div class="card border-left-primary shadow h-100 py-2">
+                      <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                  Age:</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{profile.age}</div>
+                                    </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>             
+                </div>
+            <div class="col-xl-3 col-md-6 mb-4" style={{width: '275px', height: '100px'}}>
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Zip Code:</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{profile.zipcode}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
         </div>
     );
 };

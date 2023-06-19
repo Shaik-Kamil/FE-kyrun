@@ -1,15 +1,19 @@
 import React from 'react';
+import axios from "axios";
+import { useNavigate } from "react";
 import { Link, useParams } from "react-router-dom";
 import logo from '../images/LOGO.png'
 import '../CSS/NavBar.css'
+const API = process.env.REACT_APP_API_URL
 // import Login from '../Pages/Login';
 // import LoginPage from './LoginPage';
 
 
-const NavBar = ({  userId }) => {
+const NavBar = ({ userId }) => {
     const { id } = useParams();
+    // const navigate = useNavigate()
 
-    // const addProfile = (id) => {
+    // const addProfile = (userId) => {
     //     axios
     //       .post(`${API}/users`, id)
     //       .then(
@@ -19,10 +23,9 @@ const NavBar = ({  userId }) => {
     //         (error) => console.error(error)
     //       )
     //       .catch((c) => console.warn("catch", c));
-    //   };
+    // };
 
     return (
-
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style={{paddingBottom: '2px', paddingTop: '2px'}}>
             <div class="container px-4 px-lg-5" >
                 <Link to='/' className='logo'><img src={logo} className='logo' style={{
@@ -32,17 +35,20 @@ const NavBar = ({  userId }) => {
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto" >
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item" style={{
                         padding: '10px'}}><Link to='/login'>Lace Up</Link></li>
                         <li class="nav-item" style={{
                         padding: '10px'}}><Link to='/groups'>Explore Groups</Link></li>
                         <li class="nav-item" style={{
-                        padding: '10px'}}><Link to={`/userprofile/3`}>Profile</Link></li>
+                        padding: '10px'}}><Link to={`/userprofile/${userId}`}>Profile</Link></li>
+                        <li class="nav-item" style={{
+                        padding: '10px'}}><Link to={`/runningroutes/`}>Routes</Link></li>
+                        {/* <li class="nav-item" style={{
+                        padding: '10px'}}><Link to={`/about/`}>About Us</Link></li> */}
                     </ul>
                 </div>
             </div>
-
         </nav>
     );
 };
