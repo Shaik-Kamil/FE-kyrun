@@ -25,18 +25,15 @@ const GroupDetails = ({group}) => {
         //     <h2 className='group-name'>{group.title}</h2>
         //     </Link>
             
-        <div class="card text-center mb-3" style={{ width: "20%", display: 'inline-block', padding: '25px', margin: '20px'}}>
-            <div class="card-body">
-                <Link to={`/groups/${group.id}`}>
-                    <img src={group.img} className='group-images' alt='group portrait' ></img>
+    <Link to={`/groups/${group.id}`}>
+        <div class=" card border-left-primary shadow h-100 py-2" style={{ width: "20%", display: 'inline-block', padding: '25px', margin: '20px'}}>
+            <div class="card-body" style={{textAlign: 'center'}}>
+                    <img src={group.img} className='group-images' alt='group portrait'></img>
                     
-                    <p class="card-title" style={{ marginTop: '20px'}}>{group.title}</p>
-                </Link>
-                
-                {/* <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> */}
-                {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
+                    <p class="card-title" style={{ marginTop: '20px', color: '#F18701'}}>{group.title}</p>
             </div>
         </div>
+    </Link>
         // </div>
     );
 };
