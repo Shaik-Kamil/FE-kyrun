@@ -4,9 +4,11 @@ import axios from 'axios';
 import Modal from 'react-modal';
 const API = process.env.REACT_APP_API_URL;
 
-const EditProfile = () => {
+const EditProfile = ({userId}) => {
   let { id } = useParams();
   let navigate = useNavigate();
+
+  
 
   const [profile, setProfile] = useState({
     first_name: '',
@@ -53,9 +55,9 @@ const EditProfile = () => {
   };
 
   return (
-    <div>
-      <h1>Edit your Profile</h1>
-      <button onClick={() => setIsModalOpen(true)}>Edit Profile</button>
+    <div style={{display: 'flex', flexDirection: 'column', textAlign: 'center', position: 'absolute', left: '950px', top: '800px' }}>
+      <h1 style={{position: 'relative', right: '50px'}}>Edit your Profile</h1>
+      <button onClick={() => setIsModalOpen(true)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Edit Profile</button>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
@@ -159,8 +161,8 @@ const EditProfile = () => {
             required
           />
           <br />
-          <button type="submit">Update Info</button>
-          <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+          <button type="submit" className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Update Info</button>
+          <button onClick={() => setIsModalOpen(false)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Cancel</button>
         </form>
       </Modal>
     </div>

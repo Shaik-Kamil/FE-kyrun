@@ -7,7 +7,7 @@ const API = process.env.REACT_APP_API_URL
 
 // THIS IS FOR BROWSE GROUPS, DISPLAYS ALL GROUPS ON APP
 
-const Groups = () => {
+const Groups = ({userId}) => {
   const [groups, setGroups] = useState([]);
   const [filteredGroups, setFilteredGroups] = useState([])
 
@@ -24,13 +24,19 @@ const Groups = () => {
 
   return (
     <div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <h1>Filter Groups by Title</h1>
       <GroupFilter groups={groups} setFilteredGroups={setFilteredGroups} />
       
       {filteredGroups.map((group) => {
         console.log(group)
-              return <GroupDetails key={group.id} group={group} />;
+              return <GroupDetails userId={userId} key={group.id} group={group} />;
             })}
+            
       
     </div>
   );

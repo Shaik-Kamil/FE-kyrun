@@ -11,10 +11,9 @@ const Show = ({ setUserId, userId, isJoined, setIsJoined }) => {
             setIsJoined={setIsJoined}
             isJoined={isJoined}
             />
-            
+
 
         </div>
     );
 };
-
 export default Show;
