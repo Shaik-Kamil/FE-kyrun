@@ -1,8 +1,10 @@
+import ReplyPost from './ReplyPost';
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import '../CSS/Comments.css'
 const API = process.env.REACT_APP_API_URL;
+
 
 const PostComment = ({ userId }) => {
 
@@ -29,16 +31,41 @@ const PostComment = ({ userId }) => {
     .catch((c) => console.warn("catch", c));
 }, [id])
 
-  useEffect(() => {
-    axios
-      .get(`${API}/reply/`)
-      .then((res) => setReplies(res.data))
-      .catch((c) => console.warn('catch', c));
-  }, [id]);
+    const [replies, setReplies]= useState([])
+    useEffect(() => {
+        axios
+        .get(`${API}/reply/`)
+        .then((res) => setReplies(res.data))
+        .catch((c) => console.warn("catch", c));
 
-  const addPost = (newPost) => {
-    const authorId = userId;
-    const postWithAuthorId = { ...newPost, author_id: authorId };
+    },[id])
+
+
+
+    const [reply, setReply]= useState({
+        reply:"",
+        date: `${formattedDate}`,
+        posts_id: `${id}`,
+        author_id: `${id}`,
+        groups_id: `${id}`
+    })
+
+    // variables to hold info
+  const [post, setPost] = useState({
+    post:"",
+    date: `${formattedDate}`,
+    author_id: `${id}`,
+    groups_id: `${id}`
+  });
+
+  const [showReplyForm, setShowReplyForm] = useState(false);
+  const [selectedCommentId, setSelectedCommentId] = useState(null);
+
+
+const addPost = (newPost) => {
+  const authorId = userId; // Use the userId as the author_id for the post
+  // Post will be with userId
+  const postWithAuthorId = { ...newPost, author_id: authorId };
     axios
       .post(`${API}/posts/`, postWithAuthorId)
       .then(
@@ -47,7 +74,7 @@ const PostComment = ({ userId }) => {
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn('catch', c));
+      .catch((c) => console.warn("catch", c));
   };
 
   const deletePost = (id) => {
@@ -64,7 +91,7 @@ const PostComment = ({ userId }) => {
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn('catch', c));
+      .catch((c) => console.warn("catch", c));
   };
 
   const deleteReply = (id) => {
@@ -81,8 +108,10 @@ const PostComment = ({ userId }) => {
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn('catch', c));
+      .catch((c) => console.warn("catch", c));
   };
+  
+  
 
     const addReply = (newReply) => {
       const reply1 = {
@@ -99,7 +128,7 @@ const PostComment = ({ userId }) => {
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn('catch', c));
+      .catch((c) => console.warn("catch", c));
   };
 
   const handleSubmit = (event) => {
@@ -110,8 +139,9 @@ const PostComment = ({ userId }) => {
   const handleSubmitReply = (event) => {
     event.preventDefault();
     addReply(reply);
-    setShowReplyForm(false);
+    setShowReplyForm(false)
   };
+
 
   const handleTextChange = (event) => {
     setPost({ ...post, [event.target.id]: event.target.value });
@@ -121,69 +151,80 @@ const PostComment = ({ userId }) => {
     setReply({ ...reply, [event.target.id]: event.target.value });
   };
 
+
   const toggleReplyForm = (commentId) => {
     setShowReplyForm(!showReplyForm);
     setSelectedCommentId(commentId);
   };
-
 
     
     return (
       <div class="col-lg-10" style={{position: 'relative', left: '380px', display: 'grid'}}>
       <h1>Posts</h1>
       <ul class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
-        {comments.map((comment) => {
-          // to verify that the USERID matched with the author ID
+      {comments.map((comment) => {
           const commentAuthor = profile.find((user) => user.id === comment.author_id);
           if (commentAuthor) {
             return (
-              <li key={comment.id} style={{fontSize: '20px'}}>
-      
-                <b><img src={commentAuthor.img} alt={commentAuthor.first_name} className="author-image" /> {commentAuthor.first_name}:</b>{' '} {comment.post} {comment.date} {' '}
-                <br />
-                <button onClick={() => toggleReplyForm(comment.id)}className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '150px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Reply</button>{' '}
-      
-                {parseInt(userId) === parseInt(comment.author_id) && (
-        <button onClick={() => deletePost(comment.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '150px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Delete</button>
-      )}
-      
-      <ul>
-        {replies
-          .filter((reply) => reply.post_id === comment.id)
-          .map((reply) => {
-      const replyAuthor = profile.find((user) => user.id === reply.author_id);
-      if (replyAuthor) {
-        return (
-                <li key={reply.id}>
-            <b>
-              <img src={replyAuthor.img} alt={replyAuthor.first_name} className="author-image" /> {replyAuthor.first_name}:
-            </b>{" "}
-                  {reply.reply} {reply.date}
-            {parseInt(userId) === parseInt(reply.author_id) && (
-  <button onClick={() => deleteReply(reply.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '150px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Delete</button>
-)}
-           </li>
-        );
-      } else {
-              return null;
-      }
-    })}
-      </ul>
-          </li>
+              <li key={comment.id}>
+                <div className="comment-wrapper">
+                  <div className="comment-content">
+                    <b>
+                      <img src={commentAuthor.img} alt={commentAuthor.first_name} className="author-image" />{' '}
+                      {commentAuthor.first_name}:
+                    </b>{' '}
+                    {comment.post} {comment.date}
+                  </div>
+                  <div className="comment-actions">
+                    <button onClick={() => toggleReplyForm(comment.id)}>Reply</button>
+                    {parseInt(userId) === parseInt(comment.author_id) && (
+                      <button onClick={() => deletePost(comment.id)}>Delete</button>
+                    )}
+                  </div>
+                  {showReplyForm && selectedCommentId === comment.id && (
+                    <ReplyPost
+                      handleTextChangeReply={handleTextChangeReply}
+                      handleSubmitReply={handleSubmitReply}
+                      reply={reply}
+                    />
+                  )}
+                </div>
+                <ul>
+                  {replies
+                    .filter((reply) => reply.post_id === comment.id)
+                    .map((reply) => {
+                      const replyAuthor = profile.find((user) => user.id === reply.author_id);
+                      if (replyAuthor) {
+                        return (
+                          <li key={reply.id}>
+                            <div className="reply-wrapper">
+                              <div className="reply-content">
+                                <b>
+                                  <img src={replyAuthor.img} alt={replyAuthor.first_name} className="author-image" />{' '}
+                                  {replyAuthor.first_name}:
+                                </b>{' '}
+                                {reply.reply} {reply.date}
+                              </div>
+                              <div className="reply-actions">
+                                {parseInt(userId) === parseInt(reply.author_id) && (
+                                  <button onClick={() => deleteReply(reply.id)}>Delete</button>
+                                )}
+                              </div>
+                            </div>
+                          </li>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })}
+                </ul>
+              </li>
             );
           } else {
-            return null; // Skip rendering if comment author profile not found
+            return null;
           }
         })}
       </ul>
-            {showReplyForm && selectedCommentId && (
-
-            <ReplyPost handleTextChangeReply={handleTextChangeReply}
-            handleSubmitReply={handleSubmitReply}
-            reply={reply}
-            
-            />
-            )}
 
 
             <h1>Create a Post</h1>
@@ -200,15 +241,7 @@ const PostComment = ({ userId }) => {
             <br />
             <br />
             <label style={{fontSize: '20px'}}> Date: </label>
-            
-            <input 
-                id='date'
-                type="text" 
-                value={post.date}
-                onChange={handleTextChange}
-                required
-             />
-             <br />
+  
              <br />
               <button type="submit" className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Post Comment</button>
             </form>

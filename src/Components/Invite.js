@@ -12,7 +12,7 @@ import {
 
 function Invite() {
   const { id } = useParams();
-  const URL = `https://deploy-preview-55--kyrun.netlify.app/groups/${id}`;
+  const URL = `https://kyrun.netlify.app/groups/${id}`;
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -50,7 +50,7 @@ function Invite() {
               <br />
               <br />
               <p className='link'>
-                <b>Copy Url:</b> <Link to={`/videos/${id}`}>{URL}</Link>
+                <b>Copy Url:</b> <Link to={`/groups/${id}`}>{URL}</Link>
               </p>
             </div>
             <div className='footer'>
