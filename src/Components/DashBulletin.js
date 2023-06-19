@@ -43,16 +43,38 @@ const DashBulletin = ({ userId }) => {
   }, [joinedGroup]);
 
   return (
-    <div>
-        <h2 style={{float: 'left', paddingLeft: '50px'}}><u>Important Bulletins From Your Groups:</u></h2>
+    // <div>
+      //   <h2 style={{float: 'left', paddingLeft: '50px'}}><u>Important Bulletins From Your Groups:</u></h2>
 
-                 <br></br>
-                 <br></br>
-                 <br></br>
-      {bulletin.map((group) => (
-        <Notifications key={group.id} group={group} />
-      ))}
-    </div>
+      //            <br></br>
+      //            <br></br>
+      //            <br></br>
+      // {bulletin.map((group) => (
+      //   <Notifications key={group.id} group={group} />
+      // ))}
+    // </div>
+
+    <div class="col-xl-6 col-lg-5" style={{padding: '20px'}}>
+        <div class="card shadow mb-4">
+                    {/* <!-- Card Header - Dropdown --> */}
+            <div
+              class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h4 class="m-0 font-weight-bold text-primary">Important Bulletins From Your Groups</h4>
+                <div class="dropdown no-arrow"> 
+                </div>
+            </div>
+                    {/* <!-- Card Body --> */}
+                    <div class="card-body">
+                      <div class="mt-1 text-center small feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                        <div style={{paddingTop: '20px'}}>
+                            {bulletin.map((group) => (
+                              <Notifications key={group.id} group={group} />
+                            ))}
+                        </div>
+                      </div>
+                    </div>
+        </div>
+      </div>
   );
 };
 

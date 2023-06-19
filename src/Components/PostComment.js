@@ -160,8 +160,7 @@ const addPost = (newPost) => {
 
     
     return (
-      <div class="col-lg-10" style={{position: 'relative', left: '380px', display: 'grid'}}>
-      <h1>Posts</h1>
+      <div class="col-lg-12">
       <ul class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
         {comments.map((comment) => {
           // to verify that the USERID matched with the author ID
@@ -217,20 +216,22 @@ const addPost = (newPost) => {
             )}
 
 
-            <h1>Create a Post</h1>
-            <form onSubmit={handleSubmit} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
+            <h3>Create a Post</h3>
             <label style={{fontSize: '20px'}}> Post: </label>
+            <form onSubmit={handleSubmit} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
 
-                <input 
+                <textarea 
                 id='post'
                 type="text" 
                 value={post.post}
                 onChange={handleTextChange}
+                rows="4"
+                cols="50"
                 required
              />
             <br />
-            <br />
             <label style={{fontSize: '20px'}}> Date: </label>
+            <br />
             
             <input 
                 id='date'

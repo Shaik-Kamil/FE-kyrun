@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 const Notifications = ({ group, userId }) => {
     return (
-        <div class="row" style={{paddingLeft: '150px', width: '950px'}}>
+        <div class="row" style={{paddingLeft: '20px', width: '200%'}}>
             <div class="row-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
@@ -25,7 +25,6 @@ const Notifications = ({ group, userId }) => {
                 </div>
             </div>
         </div>
-            <br />
         </div>
     );
 };

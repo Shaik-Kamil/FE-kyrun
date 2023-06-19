@@ -23,6 +23,7 @@ const GroupFilter = ({ groups, setFilteredGroups }) => {
         value={filterValue}
         onChange={handleFilterChange}
         placeholder='Filter by title...'
+        style={{margin: '20px'}}
       />
     </div>
   );
