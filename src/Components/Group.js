@@ -5,6 +5,7 @@ import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
 import NewBulletin from "./NewBulletin";
+import Invite from "./Invite";
 const API = process.env.REACT_APP_API_URL
 
 
@@ -93,6 +94,9 @@ function OneGroup ({ userId }) {
                 <NewBulletin group={group} userId={userId} id={id} />
               </div>
             )}
+                             <div>
+                <Invite />
+                </div>
               <section id="about">
                 <div class="container px-4">
                     <div class="row gx-4 justify-content-center">
@@ -120,6 +124,7 @@ function OneGroup ({ userId }) {
                   <GroupMembers group={group} id={id} />
                   </p>
                 </div>
+
                     <div className='navi'>
                         <div className='back'>
                             <Link to={`/groups`}>

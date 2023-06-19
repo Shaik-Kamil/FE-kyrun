@@ -11,9 +11,8 @@ const Index = ({ isJoined, setIsJoined, userId }) => {
     return (
         <div>
             <UserProfile />
+            <EditProfile userId={userId} />
             <DashBulletin userId={userId}/>
-            <EditProfile />
-
             
             <NewGroup userId={userId} />
 
@@ -21,10 +20,8 @@ const Index = ({ isJoined, setIsJoined, userId }) => {
             userId={userId} />
             <br/>
             {/* <Groups /> */}
-            <Suggested />
-
-
-
+            <Suggested userId={userId} />
+            <DashBulletin userId={userId}/>
             
         </div>
     );
