@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import ReactModal from 'react-modal';
 import EditUser from './Pages/EditUser';
@@ -37,6 +37,10 @@ function App() {
     const storedUserId = localStorage.getItem('userId');
     return storedUserId ? storedUserId : '';
   });
+  
+  useEffect(() => {
+    localStorage.setItem('userId', userId);
+  }, [userId]);
 
   const handleLogin = (event) => {
     event.preventDefault();

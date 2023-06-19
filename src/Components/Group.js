@@ -5,6 +5,7 @@ import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
 // import NewBulletin from "./NewBulletin";
+import Invite from "./Invite";
 const API = process.env.REACT_APP_API_URL
 
 
@@ -162,7 +163,10 @@ function OneGroup ({ userId }) {
                       <h3 class="m-0 font-weight-bold text-primary">Bulletin</h3>
                     </div>
                     <div class="card-body">
-                      <section id="about">
+                                     <div>
+                <Invite />
+                </div>
+              <section id="about">
                         <div class="container px-4">
                           <div class="row gx-4 justify-content-center">
                             <div class="col-lg-10">

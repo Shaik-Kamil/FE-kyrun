@@ -4,9 +4,11 @@ import axios from 'axios';
 import Modal from 'react-modal';
 const API = process.env.REACT_APP_API_URL;
 
-const EditProfile = () => {
+const EditProfile = ({userId}) => {
   let { id } = useParams();
   let navigate = useNavigate();
+
+  
 
   const [profile, setProfile] = useState({
     first_name: '',
