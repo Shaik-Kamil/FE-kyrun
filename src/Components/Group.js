@@ -124,6 +124,7 @@ function OneGroup ({ userId }) {
                             <button onClick={handleJoin} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Join Group</button>
                             )}
                         </div>
+                            <Invite />
                       </div>
 
                     </div>
@@ -165,7 +166,6 @@ function OneGroup ({ userId }) {
                     </div>
                     <div class="card-body">
                                      <div>
-                <Invite />
                 </div>
               <section id="about">
                         <div class="container px-4">

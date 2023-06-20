@@ -175,7 +175,7 @@ const addPost = (newPost) => {
                     {comment.post} {comment.date}
                   </div>
                   <div className="comment-actions">
-                    <button onClick={() => toggleReplyForm(comment.id)}>Reply</button>
+                    <button onClick={() => toggleReplyForm(comment.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '100px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Reply</button>
                     {parseInt(userId) === parseInt(comment.author_id) && (
                       <button onClick={() => deletePost(comment.id)}>Delete</button>
                     )}
@@ -225,11 +225,11 @@ const addPost = (newPost) => {
         })}
       </ul>
 
-            <ReplyPost handleTextChangeReply={handleTextChangeReply}
+            {/* <ReplyPost handleTextChangeReply={handleTextChangeReply}
             handleSubmitReply={handleSubmitReply}
             reply={reply}
             
-            />
+            /> */}
             
 
 
