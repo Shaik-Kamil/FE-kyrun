@@ -29,11 +29,6 @@ function Invite() {
       {isOpen && (
         <div className='modalOverlay'>
           <div className='modalInside'>
-            <div className='xButton'>
-              <button className='x' onClick={closeModal}>
-                X
-              </button>
-            </div>
             <div className='title'>
               <b>Share with friends and family!</b>
             </div>
@@ -54,7 +49,7 @@ function Invite() {
               </p>
             </div>
             <div className='footer'>
-              <button onClick={closeModal}>Done</button>
+              <button onClick={closeModal} className='borderman btn-border' style={{ border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Done</button>
             </div>
           </div>
         </div>

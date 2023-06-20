@@ -18,6 +18,7 @@ const ReplyPost = ({ handleSubmitReply, handleTextChangeReply, reply }) => {
                 value={reply.reply}
                 onChange={handleTextChangeReply}
                 required
+                style={{width: '300px', height: '100px'}}
              />
             <br />
             <br />
