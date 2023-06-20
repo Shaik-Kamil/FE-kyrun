@@ -74,7 +74,7 @@ function LoginPage({ userId, setUserId }) {
       <br></br>
       <form onSubmit={handleFormSubmit} style={{width: '100%', padding: '0.5 em;'}}>
         <h1 style={{marginBottom: '50px'}}>{isRegistering ? 'Register' : 'Log In'}</h1>
-        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px', backgroundColor: '#5271FF'}}>
+        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '50px', backgroundColor: '#5271FF', marginLeft: '220px'}}>
           <label htmlFor="email" className="input__label">Email:</label>
           <input
             class='input__input'
@@ -87,7 +87,7 @@ function LoginPage({ userId, setUserId }) {
           />
           <small></small>
         </div>
-        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '30px', backgroundColor: '#5271FF'}}>
+        <div className="input" style={{width: '350px', justifyContent: 'center', fontSize: '15px', left: '550px', marginBottom: '50px', backgroundColor: '#5271FF', marginLeft: '220px'}}>
           <label htmlFor="password" className="input__label">Password:</label>
           <input
             class='input__input'
