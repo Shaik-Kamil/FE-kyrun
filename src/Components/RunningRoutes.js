@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../CSS/RunningRoutes.css';
 
 const API = process.env.REACT_APP_API_URL;
@@ -80,35 +81,33 @@ const RunningRoutes = () => {
     window.open(mapsUrl, '_blank');
   };
 
-  const handleGoBack = () => {
-    // Redirect back to your app
-    window.location.href = 'https://www.your-app-url.com';
-  };
-
   return (
-    <div className="running-routes">
+    <div className="running-routes feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{marginTop: '100px', textAlign: 'center', padding: '20px'}}>
       <h2>Running Routes</h2>
       <p>Choose a running route to explore:</p>
-      <div className="card-container">
+      <div className="card-container" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', margin: '20px'}}>
         {runningRoutesData.map(route => (
-          <div className="card" style={{ width: '18rem' }} key={route.id}>
-            <img src={route.image} className="card-img-top" alt={route.title} />
-            <div className="card-body">
-              <h5 className="card-title">{route.title}</h5>
-              <p className="card-text">{route.description}</p>
+          <div className="card" style={{ width: '18rem', flex: '0 0 33.33%', marginBottom: '30px', padding: '10px'}} key={route.id}>
+            <img src={route.image} className="card-img-top" alt={route.title} style={{height: '200px', objectFit: 'cover'}}/>
+            <div className="card-body" style={{padding: '20px'}}>
+              <h5 className="card-title" style={{fontSize: '20px', marginBottom: '10px'}}>{route.title}</h5>
+              <p className="card-text" style={{fontSize: '14px', color: '#666', marginBottom: '20px'}}>{route.description}</p>
               <button
                 className="btn btn-primary"
+                style={{backgroundColor: '#F18701', border: 'solid 2px #F18701'}}
                 onClick={() => handleGoSomewhere(route.title)}
               >
-                Go somewhere
+                Directions
               </button>
             </div>
           </div>
         ))}
       </div>
-      <button className="btn btn-secondary" onClick={handleGoBack}>
-        Back to App
-      </button>
+      <Link to="/">
+        <button className="btn btn-secondary" style={{backgroundColor: '#F18701'}}>
+          Back
+        </button>
+      </Link>
     </div>
   );
 }

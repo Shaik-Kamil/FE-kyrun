@@ -23,7 +23,7 @@ const Groups = ({userId}) => {
   }, []);
 
   return (
-    <div>
+    <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3">
       <br />
       <br />
       <br />

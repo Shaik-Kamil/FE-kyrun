@@ -32,6 +32,7 @@ const GroupFilter = ({ groups, setFilteredGroups }) => {
         value={filterValue}
         onChange={handleTitleFilterChange}
         placeholder='Filter by title...'
+        style={{margin: '20px'}}
       />
 
       <select value={locationFilter} onChange={handleLocationFilterChange}>

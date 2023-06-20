@@ -54,6 +54,11 @@ function Shaik() {
                   </span>
                 </div>
               </div>
+                  <div className='back'>
+                      <Link to={`/about`}>
+                        <button className='borderman btn-border' style={{ border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF', margin: '10px' }}>Back</button>
+                      </Link>
+                    </div>
             </div>
           </div>
         </div>

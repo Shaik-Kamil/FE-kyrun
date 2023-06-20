@@ -37,15 +37,15 @@ const NavBar = ({ userId }) => {
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item" style={{
-                        padding: '10px'}}><Link to='/login'>Lace Up</Link></li>
+                        padding: '10px'}}><Link to='/login'>Login</Link></li>
                         <li class="nav-item" style={{
-                        padding: '10px'}}><Link to='/groups'>Explore Groups</Link></li>
+                        padding: '10px'}}><Link to='/groups'>Groups</Link></li>
                         <li class="nav-item" style={{
                         padding: '10px'}}><Link to={`/userprofile/${userId}`}>Profile</Link></li>
                         <li class="nav-item" style={{
                         padding: '10px'}}><Link to={`/runningroutes/`}>Routes</Link></li>
-                        {/* <li class="nav-item" style={{
-                        padding: '10px'}}><Link to={`/about/`}>About Us</Link></li> */}
+                        <li class="nav-item" style={{
+                        padding: '10px'}}><Link to={`/about/`}>Devs</Link></li>
                     </ul>
                 </div>
             </div>

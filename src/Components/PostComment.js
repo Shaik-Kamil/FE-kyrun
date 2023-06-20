@@ -159,8 +159,7 @@ const addPost = (newPost) => {
 
     
     return (
-      <div class="col-lg-10" style={{position: 'relative', left: '380px', display: 'grid'}}>
-      <h1>Posts</h1>
+      <div class="col-lg-12">
       <ul class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
       {comments.map((comment) => {
           const commentAuthor = profile.find((user) => user.id === comment.author_id);
@@ -176,7 +175,7 @@ const addPost = (newPost) => {
                     {comment.post} {comment.date}
                   </div>
                   <div className="comment-actions">
-                    <button onClick={() => toggleReplyForm(comment.id)}>Reply</button>
+                    <button onClick={() => toggleReplyForm(comment.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '100px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Reply</button>
                     {parseInt(userId) === parseInt(comment.author_id) && (
                       <button onClick={() => deletePost(comment.id)}>Delete</button>
                     )}
@@ -226,22 +225,39 @@ const addPost = (newPost) => {
         })}
       </ul>
 
+            {/* <ReplyPost handleTextChangeReply={handleTextChangeReply}
+            handleSubmitReply={handleSubmitReply}
+            reply={reply}
+            
+            /> */}
+            
 
-            <h1>Create a Post</h1>
-            <form onSubmit={handleSubmit} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
+
+            <h3>Create a Post</h3>
             <label style={{fontSize: '20px'}}> Post: </label>
+            <form onSubmit={handleSubmit} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
 
-                <input 
+                <textarea 
                 id='post'
                 type="text" 
                 value={post.post}
                 onChange={handleTextChange}
+                rows="4"
+                cols="50"
                 required
              />
             <br />
-            <br />
             <label style={{fontSize: '20px'}}> Date: </label>
-  
+            <br />
+            
+            <input 
+                id='date'
+                type="text" 
+                value={post.date}
+                onChange={handleTextChange}
+                required
+             />
+             <br />
              <br />
               <button type="submit" className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Post Comment</button>
             </form>

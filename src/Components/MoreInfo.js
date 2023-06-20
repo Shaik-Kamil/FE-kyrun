@@ -16,14 +16,14 @@ function MoreInfo(props) {
                     <img class="img-fluid" src={kyrunGif2} 
                         style={{
                             height: '500px', width: '2592px', paddingBottom: '20px'}} alt="..." />
-                            <a class="btn btn-primary" href="#about" style={{position: 'absolute', top: '58%', left: '45%', backgroundColor:'#F18701', border: '#F18701', color: '#FFFFFF'}}>What's Kyrun?</a>
+                            <a class="btn btn-primary" href="#about" style={{ backgroundColor:'#F18701', border: '#F18701', color: '#FFFFFF', marginTop: '-180px'}}>What's Kyrun?</a>
                     </div>
                 </div>
             </div>
         </header> 
             <section class="about-section text-center" id="about"
             style={{
-                paddingTop: '50px'}}>
+                paddingTop: '20px'}}>
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8" style={{ paddingBottom: '50px', paddingTop: '10px'}} >
@@ -41,7 +41,8 @@ function MoreInfo(props) {
                 {/* <!-- Featured Project Row--> */}
                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center" style={{
             backgroundColor:'#F8F9FA'}}>
-                    <div class="col-xl-8 col-lg-7" ><img class="img-fluid mb-3 mb-lg-0" src={group3} alt="..." /></div>
+                    <div class="col-xl-8 col-lg-7" ><img class="img-fluid mb-3 mb-lg-0" src={group3} alt="..." style={{
+                                paddingRight:'80px'}}/></div>
                     <div class="col-xl-4 col-lg-5" >
                         <div class="featured-text text-center text-lg-left" style={{
                                 paddingRight:'80px'}}>
