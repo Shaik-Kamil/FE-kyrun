@@ -177,7 +177,7 @@ const addPost = (newPost) => {
                   <div className="comment-actions">
                     <button onClick={() => toggleReplyForm(comment.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '100px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Reply</button>
                     {parseInt(userId) === parseInt(comment.author_id) && (
-                      <button onClick={() => deletePost(comment.id)}>Delete</button>
+                      <button onClick={() => deletePost(comment.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '100px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Delete</button>
                     )}
                   </div>
                   {showReplyForm && selectedCommentId === comment.id && (
@@ -206,7 +206,7 @@ const addPost = (newPost) => {
                               </div>
                               <div className="reply-actions">
                                 {parseInt(userId) === parseInt(reply.author_id) && (
-                                  <button onClick={() => deleteReply(reply.id)}>Delete</button>
+                                  <button onClick={() => deleteReply(reply.id)} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '100px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Delete</button>
                                 )}
                               </div>
                             </div>
