@@ -91,80 +91,80 @@
 /* Add more styles as needed */
  /* */ 
 
- .card-container {
+ /* .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-}
+} */
 
-.card {
+/* .card {
   flex: 0 0 33.33%;
   margin-bottom: 20px;
   padding: 10px;
-}
+} */
 
-  .route-card {
+  /* .route-card {
     flex: 0 0 18rem;
     margin: 1rem;
-  }
+  } */
   
-  .route-card img {
+  /* .route-card img {
     width: 100%;
     height: auto;
-  }
+  } */
   
-  .route-info {
+  /* .route-info {
     padding: 1rem;
-  }
+  } */
   /* RunningRoutes.css */
 
-.running-routes {
+/* .running-routes {
   text-align: center;
   padding: 20px;
-}
+} */
 
-.card-container {
+/* .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
-}
+} */
 
-.card {
+/* .card {
   width: 300px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease;
-}
+} */
 
-.card:hover {
+/* .card:hover {
   transform: translateY(-5px);
-}
+} */
 
-.card-img-top {
+/* .card-img-top {
   height: 200px;
   object-fit: cover;
-}
+} */
 
-.card-body {
+/* .card-body {
   padding: 20px;
-}
+} */
 
-.card-title {
+/* .card-title {
   font-size: 20px;
   margin-bottom: 10px;
-}
+} */
 
-.card-text {
+/* .card-text {
   font-size: 14px;
   color: #666;
   margin-bottom: 20px;
-}
+} */
 
-.btn-primary {
+/* .btn-primary {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -173,13 +173,13 @@
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
+} */
 
-.btn-primary:hover {
+/* .btn-primary:hover {
   background-color: #0056b3;
-}
+} */
 
-.btn-secondary {
+/* .btn-secondary {
   background-color: #6c757d;
   color: #fff;
   border: none;
@@ -189,8 +189,8 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 20px;
-}
+} */
 
-.btn-secondary:hover {
+/* .btn-secondary:hover {
   background-color: #525a61;
-}
+} */

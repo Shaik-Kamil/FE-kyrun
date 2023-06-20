@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import '../Components/EditProfile'
 import EditProfile from "../Components/EditProfile";
 import NewGroup from "../Components/NewGroup";
+
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -89,9 +89,6 @@ const UserProfile = () => {
                                               Gender:</div>
                                           <div class="h5 mb-0 font-weight-bold text-gray-800">{profile.gender}</div>
                                           </div>
-                                          <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                          </div>
                                       </div>
                                   </div>
                               </div>
@@ -105,9 +102,6 @@ const UserProfile = () => {
                                                 Running Pace:</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{profile.pace}</div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -120,9 +114,6 @@ const UserProfile = () => {
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Gender:</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{profile.age}</div>
-                                </div>
-                                <div class="col-auto">
-                                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -142,12 +133,7 @@ const UserProfile = () => {
                             </div>
                         </div>
                        
-                          <div style={{padding: '27px'}}>
-                            <EditProfile />
-                          </div>
-                          <div style={{padding: '20px'}}>
-                            <NewGroup />
-                          </div>
+                        
                           
                         
         </div>
@@ -182,6 +168,7 @@ const UserProfile = () => {
                 {/* <!-- Content Column --> */}
                 <div class="col-lg-6 mb-4">
 
+                        
                   {/* <!-- Project Card Example --> */}
                   {/* <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -194,7 +181,7 @@ const UserProfile = () => {
                             <div class="col-lg-10">
                               <p class="lead">
                                 <div>
-                                  <Bulletin group={group} />
+                                  <DashBulletin userId={userId}/>
                                 </div>
                               </p> 
                             </div>
@@ -207,7 +194,9 @@ const UserProfile = () => {
                             
               </div>
 
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-4 mb-4" style={{ marginLeft: 'auto' }}>
+
+                    
 
                   {/* <!-- Illustrations --> */}
                   {/* <div class="card shadow mb-4">
@@ -227,16 +216,27 @@ const UserProfile = () => {
                   </div> */}
 
                   {/* <!-- Approach --> */}
-                  {/* <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+
+                  
+                  <div class="card shadow mb-4">
+                    
+                    <div>
+                      
+                      
+                      <h6 class="m-0 font-weight-bold text-primary"></h6>
                     </div>
                     <div class="card-body">
                       <div className='navi'>
-                        
+                        <div style={{padding: '27px'}}>
+                            <EditProfile />
+                        </div>
+                      <div style={{padding: '20px'}}>
+                            <NewGroup />
+                          </div>
+                          
                       </div>
                     </div>
-                  </div> */}
+                  </div>
                   
                 </div>
               </div>

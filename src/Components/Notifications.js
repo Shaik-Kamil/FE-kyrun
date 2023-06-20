@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-// import '../CSS/Notifications.css';
+import React from 'react';
 
-const Notifications = ({ group, userId }) => {
+const Notifications = ({ group }) => {
     return (
-        <div class="row" style={{paddingLeft: '20px', width: '200%'}}>
+        <div class="row" style={{ paddingLeft: '20px', width: '200%' }}>
             <div class="row-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
@@ -18,9 +15,7 @@ const Notifications = ({ group, userId }) => {
                                     <p><i>{group.date}</i> From <u> {group.groups}</u></p>
                                 </div>
                             </div>
-                        <div class="row-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

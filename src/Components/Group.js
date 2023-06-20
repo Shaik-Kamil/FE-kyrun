@@ -112,6 +112,7 @@ function OneGroup ({ userId }) {
                     {/* <!-- Card Body --> */}
                     <div class="card-body">
                       <div class="chart-area feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
+                        <img src={group.img} style={{float: 'left', borderRadius: '100px', width: '200px', height: '200px', paddingBottom: '10px'}}></img>
                         <h3>{group.about}</h3>
                         <div className="join">
                           {isJoined ? (

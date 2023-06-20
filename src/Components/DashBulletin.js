@@ -54,7 +54,7 @@ const DashBulletin = ({ userId }) => {
       // ))}
     // </div>
 
-    <div class="col-xl-6 col-lg-5" style={{padding: '20px'}}>
+    <div class="col-xl-8 col-lg-5" style={{ padding: '10px', marginTop: '-630px' }}>
         <div class="card shadow mb-4">
                     {/* <!-- Card Header - Dropdown --> */}
             <div
