@@ -1,0 +1,12 @@
+a {
+    text-decoration: none;
+}
+
+img {
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+footer {
+    display: grid;
+}
