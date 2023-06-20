@@ -25,7 +25,7 @@ function Invite() {
 
   return (
     <>
-      <button onClick={openModal}>Invite</button>
+      <button onClick={openModal} className='borderman btn-border' style={{ border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Invite</button>
       {isOpen && (
         <div className='modalOverlay'>
           <div className='modalInside'>

@@ -10,9 +10,9 @@ const ReplyPost = ({ handleSubmitReply, handleTextChangeReply, reply }) => {
     return (
         <div>
             
-            <form onSubmit={handleSubmitReply} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
             <label>Reply Post:</label>
-                <input 
+            <form onSubmit={handleSubmitReply} class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
+                <textarea 
                 id='reply'
                 type="text" 
                 value={reply.reply}

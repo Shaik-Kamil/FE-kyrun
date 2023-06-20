@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import PostComment from './PostComment'
 import GroupMembers from './GroupMembers';
 import Bulletin from "./Bulletin";
-import NewBulletin from "./NewBulletin";
+// import NewBulletin from "./NewBulletin";
 import Invite from "./Invite";
 const API = process.env.REACT_APP_API_URL
 
@@ -63,78 +63,179 @@ function OneGroup ({ userId }) {
       console.error('Failed to leave the group', error);
     }
   };
+
   return (
-            <article>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            <div>
-              <header class="bg-primary bg-gradient text-white">
-                <div class="container px-4 text-center" style={{padding: '30px'}}>
-                    {/* <img className='group-img' src={group.img} alt='group'></img> */}
-                    <h1 class="fw-bolder">Welcome to {group.title}</h1>
-                    <p class="lead">{group.about}</p>
-                    <div className="join">
-                {isJoined ? (
-                  <>
-                    <h3>You are a member of the {group.title} community. </h3>
-                    <button onClick={handleLeave} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Leave Group</button>
-                  </>
-                ) : (
-                  <button onClick={handleJoin} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Join Group</button>
-                  )}
+    <body id="page-top">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        {/* <!-- Page Wrapper --> */}
+        <div id="wrapper" />
+
+        {/* <!-- Content Wrapper --> */}
+        <div id="content-wrapper" class="d-flex flex-column">
+
+          {/* <!-- Main Content --> */}
+          <div id="content">
+
+            {/* <!-- Begin Page Content --> */}
+            <div class="container-fluid">
+
+              {/* <!-- Page Heading --> */}
+              <div class="d-sm-flex align-items-center justify-content-center mb-4 feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '10px'}}>
+                <h1 class="h3 mb-0 text-gray-800">Welcome to {group.title}</h1>
               </div>
-                    {/* <a class="btn btn-lg btn-light" href="#about">Start Scrolling</a> */}
+
+              {/* <!-- Content Row --> */}
+              <div class="row">
+
+
+              </div>
+
+              {/* <!-- Content Row --> */}
+
+              <div class="row">
+
+                {/* <!-- Area Chart --> */}
+                <div class="col-xl-8 col-lg-7">
+                  <div class="card shadow mb-4">
+                    {/* <!-- Card Header - Dropdown --> */}
+                    <div
+                      class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h4 class="m-0 font-weight-bold text-primary">Group Details</h4>
+                      <div class="dropdown no-arrow">
+                      </div>
+                    </div>
+                    {/* <!-- Card Body --> */}
+                    <div class="card-body">
+                      <div class="chart-area feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
+                        <img src={group.img} style={{float: 'left', borderRadius: '100px', width: '200px', height: '200px', paddingBottom: '10px'}}></img>
+                        <h3>{group.about}</h3>
+                        <div className="join">
+                          {isJoined ? (
+                            <>
+                              <h3>You are a member of the {group.title} community. </h3>
+                              <button onClick={handleLeave} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Leave Group</button>
+                            </>
+                          ) : (
+                            <button onClick={handleJoin} className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Join Group</button>
+                            )}
+                        </div>
+                            <Invite />
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
-              </header>
-              {isAuthor && (
-                <div>
-                <NewBulletin group={group} userId={userId} id={id} />
+
+                {/* <!-- Pie Chart --> */}
+                <div class="col-xl-4 col-lg-5">
+                  <div class="card shadow mb-4">
+                    {/* <!-- Card Header - Dropdown --> */}
+                    <div
+                      class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h4 class="m-0 font-weight-bold text-primary">Members</h4>
+                      <div class="dropdown no-arrow"> 
+                      </div>
+                    </div>
+                    {/* <!-- Card Body --> */}
+                    <div class="card-body">
+                      <div class="mt-1 text-center small feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}>
+                        <div>
+                            <GroupMembers group={group} id={id} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            )}
-                             <div>
-                <Invite />
+
+              {/* <!-- Content Row --> */}
+              <div class="row">
+
+                {/* <!-- Content Column --> */}
+                <div class="col-lg-6 mb-4">
+
+                  {/* <!-- Project Card Example --> */}
+                  <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                      <h3 class="m-0 font-weight-bold text-primary">Bulletin</h3>
+                    </div>
+                    <div class="card-body">
+                                     <div>
                 </div>
               <section id="about">
-                <div class="container px-4">
-                    <div class="row gx-4 justify-content-center">
-                        <div class="col-lg-8">
+                        <div class="container px-4">
+                          <div class="row gx-4 justify-content-center">
+                            <div class="col-lg-10">
                               <p class="lead">
-                                <br />
                                 <div>
                                   <Bulletin group={group} />
                                 </div>
-                                <br />
-                                <br />
-                              </p>    
-                            <ul>
-                              <div className='comments' style={{position: 'relative', bottom: '100px'}}>
-                                <PostComment group={group} userId={userId} />
-                              </div>
-                            </ul>
+                              </p> 
+                            </div>
+                          </div>
                         </div>
+                      </section>
                     </div>
-                </div>
-            </section>
-                <div class="col-lg-4" style={{ position: 'relative', left: '50px', bottom: '655px', marginTop: '20px'}}>
-                  
-                  <p class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style={{padding: '20px'}}><img src={group.img} style={{width: '250px', height: '250px', padding: '20px'}}></img>
-                  <GroupMembers group={group} id={id} />
-                  </p>
-                </div>
+                  </div>
 
-                    <div className='navi'>
-                        <div className='back'>
-                            <Link to={`/groups`}>
-                                <button className='borderman btn-border' style={{border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF'}}>Back</button>
-                            </Link>
-                        </div>
+                            
+              </div>
+
+                <div class="col-lg-6 mb-4">
+
+                  {/* <!-- Illustrations --> */}
+                  <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                      <h3 class="m-0 font-weight-bold text-primary">Posts</h3>
                     </div>
+                    <div class="card-body">
+                      <div class="text-center">
+                        
+                      </div>
+                          <ul>
+                            <div>
+                              <PostComment group={group} userId={userId} />
+                            </div>
+                          </ul>
+                    </div>
+                  </div>
+
+                  {/* <!-- Approach --> */}
+                  {/* <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                    </div>
+                    <div class="card-body">
+                      <div className='navi'>
+                        
+                      </div>
+                    </div>
+                  </div> */}
+                  
                 </div>
-            </article>
-        );
+              </div>
+              <div className='back'>
+                      <Link to={`/groups`}>
+                        <button className='borderman btn-border' style={{ border: 'none', outline: 'none', padding: '10px', backgroundColor: '#F18701', borderRadius: '5px', width: '200px', height: '50px', fontSize: '20px', color: '#FFFFFF' }}>Back</button>
+                      </Link>
+                  </div>
+            </div>
+            {/* <!-- /.container-fluid --> */}
+
+          </div>
+          {/* <!-- End of Main Content --> */}
+
+        </div>
+        {/* <!-- End of Content Wrapper --> */}
+
+      </body>
+            
+            );
     };
     
     export default OneGroup;
