@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Index = ({ isJoined, setIsJoined, userId }) => {
     return (
         <div>
-            <UserProfile />
+            <UserProfile userId={userId}/>
             <DashBulletin userId={userId}/>
             <JoinedGroups 
             userId={userId} />
